@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from project_interfaces/action/RequestSensor.action
+// generated code does not contain a copyright notice
+
+
+module project_interfaces {
+  module action {
+    struct RequestSensor_Goal {
+      string bs_request;
+    };
+    struct RequestSensor_Result {
+      string balloons_response;
+    };
+    struct RequestSensor_Feedback {
+      string feed;
+    };
+  };
+};
