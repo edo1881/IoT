@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces
+CMAKE_SOURCE_DIR = /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces
+CMAKE_BINARY_DIR = /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces
 
 # Utility rule file for project_interfaces__py.
 
@@ -157,8 +157,8 @@ rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesuppo
 rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/unique_identifier_msgs/msg/UUID.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
-	cd /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
+	cd /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
 rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_introspection_c.c: rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_introspection_c.c
@@ -198,10 +198,10 @@ project_interfaces__py/CMakeFiles/project_interfaces__py.dir/build: project_inte
 .PHONY : project_interfaces__py/CMakeFiles/project_interfaces__py.dir/build
 
 project_interfaces__py/CMakeFiles/project_interfaces__py.dir/clean:
-	cd /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py && $(CMAKE_COMMAND) -P CMakeFiles/project_interfaces__py.dir/cmake_clean.cmake
+	cd /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py && $(CMAKE_COMMAND) -P CMakeFiles/project_interfaces__py.dir/cmake_clean.cmake
 .PHONY : project_interfaces__py/CMakeFiles/project_interfaces__py.dir/clean
 
 project_interfaces__py/CMakeFiles/project_interfaces__py.dir/depend:
-	cd /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py/CMakeFiles/project_interfaces__py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py/CMakeFiles/project_interfaces__py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : project_interfaces__py/CMakeFiles/project_interfaces__py.dir/depend
 

@@ -1,7 +1,7 @@
 {
   "package_name": "project_interfaces",
   "non_idl_tuples": [
-    "/home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces:action/Patrol.action",
-    "/home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces:action/RequestSensor.action"
+    "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces:action/Patrol.action",
+    "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces:action/RequestSensor.action"
   ]
 }

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces
+CMAKE_SOURCE_DIR = /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces
+CMAKE_BINARY_DIR = /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces
 
 # Utility rule file for project_interfaces.
 
@@ -66,8 +66,8 @@ include CMakeFiles/project_interfaces.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/project_interfaces.dir/progress.make
 
-CMakeFiles/project_interfaces: /home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces/action/Patrol.action
-CMakeFiles/project_interfaces: /home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces/action/RequestSensor.action
+CMakeFiles/project_interfaces: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces/action/Patrol.action
+CMakeFiles/project_interfaces: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces/action/RequestSensor.action
 CMakeFiles/project_interfaces: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 CMakeFiles/project_interfaces: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 CMakeFiles/project_interfaces: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -116,6 +116,6 @@ CMakeFiles/project_interfaces.dir/clean:
 .PHONY : CMakeFiles/project_interfaces.dir/clean
 
 CMakeFiles/project_interfaces.dir/depend:
-	cd /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces /home/zephyrus/Desktop/IoT/IoT-Project-2024/src/project_interfaces /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/CMakeFiles/project_interfaces.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/CMakeFiles/project_interfaces.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/project_interfaces.dir/depend
 

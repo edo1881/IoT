@@ -16,7 +16,7 @@ from project_interfaces.action import RequestSensor
 NUMBER_OF_BALLOONS = int(sys.argv[1])
 NUMBER_OF_SENSORS = int(sys.argv[2])
 
-SENSORS_RANGE = 40
+SENSORS_RANGE = 20
 
 class SimulationManager(Node):
 
@@ -35,14 +35,12 @@ class SimulationManager(Node):
                 f'Sensor_{i}/odometry',
                 lambda odometry_msg, sensor_id = i: self.store_sensor_position(sensor_id, odometry_msg),
                 10
-                #self.store_sensor_position
             )
 
             self.create_subscription(
                 String,
                 f'Sensor_{i}/tx_data',
                 lambda string_msg, sensor_id = i: self.forward_data(sensor_id, string_msg),
-                #self.forward_data,
                 10
             )
            
@@ -57,7 +55,6 @@ class SimulationManager(Node):
                 f'Balloon_{i}/odometry',
                 lambda odometry_msg, balloon_id = i: self.store_balloon_position(balloon_id, odometry_msg),
                 10
-                #self.store_sensor_position
             )
 
             self.balloons_rx[i] = self.create_publisher(
@@ -85,10 +82,7 @@ class SimulationManager(Node):
 
 
     def forward_data(self, sensor_id, msg : String):
-
         for i in range(NUMBER_OF_BALLOONS):
-            if sensor_id in self.sensor_positions and i in self.balloon_positions:
-                
                 if math_utils.point_distance(self.sensor_positions[sensor_id], self.balloon_positions[i]) < SENSORS_RANGE:
                     self.balloons_rx[i].publish(msg)
                     
@@ -98,7 +92,7 @@ class SimulationManager(Node):
         response_msg = String()
         for i in range(NUMBER_OF_BALLOONS):
                 if math_utils.point_distance(self.sensor_positions[int(sensor_id)], self.balloon_positions[i]) < SENSORS_RANGE:
-                    response_msg = f"bs: Sensor data for {sensor_id}"
+                    response_msg = f"bs:{sensor_id}"
                     response_msg_ros = String(data=response_msg)
                     self.balloons_rx[i].publish(response_msg_ros)
                     success = True

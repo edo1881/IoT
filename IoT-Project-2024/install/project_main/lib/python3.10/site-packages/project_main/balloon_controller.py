@@ -6,7 +6,7 @@ from rclpy.node import Node
 from rclpy.action import ActionServer
 from rclpy.action.server import ServerGoalHandle
 from rclpy.executors import MultiThreadedExecutor
-
+from collections import OrderedDict, Counter
 from std_msgs.msg import String
 from geometry_msgs.msg import Point, Vector3, Twist
 from nav_msgs.msg import Odometry
@@ -23,11 +23,6 @@ class BalloonController(Node):
 
     def __init__(self):
         super().__init__("drone_controller")
-
-
-        self.cache = []
-        self.cache_size = SIZE
-
 
         self.position = Point(x = 0.0, y = 0.0, z = 0.0)
         self.yaw = 0
@@ -61,13 +56,76 @@ class BalloonController(Node):
             'patrol',
             self.execute_patrol_action
         )
+        self.cache = OrderedDict()  # Used for LRU, FIFO, Random
+        self.access_counter = Counter()  # Used for LFU
+        self.cache_size = SIZE
+        self.cache_policy = "Random"  # Change to "LFU", "FIFO", or "Random"
 
-
-    def rx_callback(self, msg : String):
-        #self.get_logger().info(msg.data)
+    def rx_callback(self, msg: String):
         if "bs:" in msg.data:
-            self.get_logger().info(msg.data)
+            # Base station is requesting data for a specific sensor
+            sensor_id = msg.data.split(":")[1]
+            data = self.access_cache(sensor_id)
+            if data:
+                self.get_logger().info(f"Data for sensor {sensor_id} found in cache: {data}")
+            else:
+                self.get_logger().info(f"Cache miss for sensor {sensor_id}")
+                # Handle cache miss, e.g., by fetching data from another source
+        elif "Sensor"==msg.data.split(" ")[0]:
+            # Sensor is sending data to be stored
+            sensor_id=msg.data.split(":")[1].split("_")[0]
+            sensor_data=msg.data.split(":")[1].split("_")[1]
+            self.get_logger().info(f"id:{sensor_id},data:{sensor_data}")
+            self.store_in_cache(sensor_id, sensor_data)
+            self.get_logger().info(f"Data for sensor {sensor_id} stored in cache.")
 
+    def access_cache(self, key):
+        if key in self.cache:
+            if self.cache_policy == "LRU":
+                self.cache.move_to_end(key)  # Update LRU order
+                self.get_logger().info(f"LRU access: Moved {key} to the end of the cache.")
+            elif self.cache_policy == "LFU":
+                self.access_counter[key] += 1  # Increase LFU access count
+                self.get_logger().info(f"LFU access: Increased access count for {key}.")
+            return self.cache[key]
+        self.get_logger().info(f"Cache miss for {key}.")
+        return None  # Cache miss
+
+    def store_in_cache(self, key, data):
+        if len(self.cache) >= self.cache_size:
+            self.evict_cache()
+        self.cache[key] = data
+        self.get_logger().info(f"Stored {key}: {data} in cache. Current cache size: {len(self.cache)}.")
+        if self.cache_policy == "LFU":
+            self.access_counter[key] += 1
+
+    def evict_cache(self):
+        if self.cache_policy == "FIFO" or self.cache_policy == "LRU":
+            evicted_key, evicted_value = self.cache.popitem(last=False)  # Evict the first item (FIFO) or the least recently used item (LRU)
+            self.get_logger().info(f"Evicted {evicted_key}: {evicted_value} from cache using {self.cache_policy} policy.")
+        elif self.cache_policy == "LFU":
+            lfu_key = min(self.access_counter, key=self.access_counter.get)
+            evicted_value = self.cache[lfu_key]
+            del self.cache[lfu_key]
+            del self.access_counter[lfu_key]
+            self.get_logger().info(f"Evicted {lfu_key}: {evicted_value} from cache using LFU policy.")
+        elif self.cache_policy == "Random":
+            random_key = random.choice(list(self.cache.keys()))
+            evicted_value = self.cache[random_key]
+            del self.cache[random_key]
+            self.get_logger().info(f"Evicted {random_key}: {evicted_value} from cache using Random policy.")
+
+    def display_cache(self):
+        self.get_logger().info(f"Cache content ({self.cache_policy}): {list(self.cache.keys())}")
+
+    def store_position(self, odometry_msg: Odometry):
+        self.position = odometry_msg.pose.pose.position
+        self.yaw = math_utils.get_yaw(
+            odometry_msg.pose.pose.orientation.x,
+            odometry_msg.pose.pose.orientation.y,
+            odometry_msg.pose.pose.orientation.z,
+            odometry_msg.pose.pose.orientation.w
+        )
 
     def store_position(self, odometry_msg : Odometry):
 

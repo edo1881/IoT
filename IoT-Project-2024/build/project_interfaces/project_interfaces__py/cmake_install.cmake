@@ -1,8 +1,8 @@
-# Install script for directory: /home/zephyrus/Desktop/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py
+# Install script for directory: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces/project_interfaces__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/zephyrus/Desktop/IoT/IoT-Project-2024/install/project_interfaces")
+  set(CMAKE_INSTALL_PREFIX "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
