@@ -24,9 +24,17 @@ class SimulationManager(Node):
 
         super().__init__('simulation_manager')
 
-
+        self.responses = {}
         self.sensor_positions = {}
         self.balloon_positions = {}
+
+        
+        self.create_subscription(
+                String,
+                f'bs/tx_data',
+                lambda string_msg :  self.response_balloon( string_msg),
+                10
+            )
 
         for i in range(NUMBER_OF_SENSORS):
 
@@ -63,6 +71,8 @@ class SimulationManager(Node):
                 10
             )
 
+
+
         # Initialize Action Server
         self.action_server = ActionServer(
             self,
@@ -70,6 +80,36 @@ class SimulationManager(Node):
             'sensor_request',
             self.handle_sensor_request
         )
+    
+
+    def response_balloon(self, sensor_id, msg : String):
+         ''' msg = 'id_sensore_dato_timestamp'''
+         id = msg.data.split(":")[0]
+         dati = msg.data.split(":")[1]
+         self.get_logger().info(f"Data for sensor {id} found in cache: {dati}")
+
+         #timestamp = msg.data.split("_")
+            
+         if self.responses.get(id) is None  : 
+           self.responses[id] = dati
+         else : 
+             if dati != "miss" : 
+                  self.get_logger().info(f"un altro pallone ha già inviato i dati per questo sensore")
+             else : 
+                 self.responses[id] = msg 
+    
+                 
+                
+
+                 
+         
+
+
+          
+          
+          
+
+
 
     def store_sensor_position(self, sensor_id, position : Odometry):
 
@@ -106,12 +146,36 @@ class SimulationManager(Node):
         sensor_id = goal_handle.request.bs_request
         self.get_logger().info(f"Received request for sensor {sensor_id}")
 
-        success = self.forward_data2bs(sensor_id)
-
-        if success:
+        # success = self.forward_data2bs(sensor_id)
+        
+        while self.responses.get(sensor_id) is None  or (self.responses.get(sensor_id) == "miss" ) :
+            if (self.responses[sensor_id] == "miss") : 
+                 self.get_logger().info('==================================')
+                 self.get_logger().info('==================================')
+                 self.get_logger().info(f'rilevato cache miss per sensore {sensor_id}, rimango in attesa...')
+                 self.get_logger().info('==================================')
+                 self.get_logger().info('==================================')
+            else : 
+                 self.get_logger().info('==================================')
+                 self.get_logger().info('==================================')
+                 self.get_logger().info(f'ancora nessun dato  per sensore {sensor_id}, rimango in attesa...')
+                 self.get_logger().info('==================================')
+                 self.get_logger().info('==================================')
+                      
+            
+            await rclpy.sleep(3.0)
+        
+      
+        msg = String()
+        msg= self.responses[sensor_id]
+        dato = msg.data.split(":")[1]
+        # timestamp = msg.data.split("_")[2]
+        
+        if True:
             goal_handle.succeed()
+            del self.responses[sensor_id]
             result = RequestSensor.Result()
-            result.balloons_response = f"Data successfully received from sensor {sensor_id}."
+            result.balloons_response = f"Data successfully received from sensor {sensor_id} : {dato}."
             return result
         else:
             goal_handle.abort()
