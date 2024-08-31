@@ -45,7 +45,7 @@ class SensorController(Node):
         id = self.id.get_parameter_value().integer_value
 
         msg = String()
-        msg.data = f"Sensor data:{id}_{self.generate_data()}"
+        msg.data = f"Sensor data:{id}_{self.generate_data()}_10"
 
         self.tx_topic.publish(msg) 
 

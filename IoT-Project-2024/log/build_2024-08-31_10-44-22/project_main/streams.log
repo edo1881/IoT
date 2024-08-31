@@ -1,0 +1,63 @@
+[0.352s] Invoking command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_main': PYTHONPATH=/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/project_main build --build-base /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build install --record /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/install.log --single-version-externally-managed install_data
+[0.469s] running egg_info
+[0.469s] creating ../../build/project_main/project_main.egg-info
+[0.469s] writing ../../build/project_main/project_main.egg-info/PKG-INFO
+[0.470s] writing dependency_links to ../../build/project_main/project_main.egg-info/dependency_links.txt
+[0.470s] writing entry points to ../../build/project_main/project_main.egg-info/entry_points.txt
+[0.470s] writing requirements to ../../build/project_main/project_main.egg-info/requires.txt
+[0.470s] writing top-level names to ../../build/project_main/project_main.egg-info/top_level.txt
+[0.470s] writing manifest file '../../build/project_main/project_main.egg-info/SOURCES.txt'
+[0.471s] reading manifest file '../../build/project_main/project_main.egg-info/SOURCES.txt'
+[0.471s] writing manifest file '../../build/project_main/project_main.egg-info/SOURCES.txt'
+[0.471s] running build
+[0.471s] running build_py
+[0.471s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build
+[0.471s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib
+[0.471s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.471s] copying project_main/__init__.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.471s] copying project_main/balloon_controller.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.472s] copying project_main/sensor_controller.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.472s] copying project_main/math_utils.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.473s] copying project_main/simulation_manager.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.473s] copying project_main/base_station.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.474s] copying project_main/sim_utils.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.474s] copying project_main/fleet_coordinator.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main
+[0.475s] running install
+[0.475s] running install_lib
+[0.475s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/__init__.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/balloon_controller.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/sensor_controller.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/math_utils.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/simulation_manager.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/base_station.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/sim_utils.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] copying /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build/lib/project_main/fleet_coordinator.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main
+[0.476s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/__init__.py to __init__.cpython-310.pyc
+[0.476s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/balloon_controller.py to balloon_controller.cpython-310.pyc
+[0.478s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/sensor_controller.py to sensor_controller.cpython-310.pyc
+[0.478s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/math_utils.py to math_utils.cpython-310.pyc
+[0.479s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/simulation_manager.py to simulation_manager.cpython-310.pyc
+[0.479s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/base_station.py to base_station.cpython-310.pyc
+[0.479s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/sim_utils.py to sim_utils.cpython-310.pyc
+[0.479s] byte-compiling /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main/fleet_coordinator.py to fleet_coordinator.cpython-310.pyc
+[0.480s] running install_data
+[0.480s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/share/ament_index
+[0.480s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/share/ament_index/resource_index
+[0.480s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/share/ament_index/resource_index/packages
+[0.480s] copying resource/project_main -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/share/ament_index/resource_index/packages
+[0.480s] copying package.xml -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/share/project_main
+[0.480s] copying launch/simulation_launch.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/share/project_main
+[0.480s] creating /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.480s] copying project_main/math_utils.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.480s] copying project_main/sim_utils.py -> /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.481s] running install_egg_info
+[0.481s] Copying ../../build/project_main/project_main.egg-info to /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages/project_main-0.0.0-py3.10.egg-info
+[0.482s] running install_scripts
+[0.494s] Installing balloon_controller script to /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.494s] Installing base_station script to /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.494s] Installing fleet_coordinator script to /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.494s] Installing sensor_controller script to /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.494s] Installing simulation_manager script to /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/project_main
+[0.494s] writing list of installed files to '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/install.log'
+[0.507s] Invoked command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_main' returned '0': PYTHONPATH=/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_main/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/project_main build --build-base /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/build install --record /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_main/install.log --single-version-externally-managed install_data

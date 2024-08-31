@@ -4,9 +4,11 @@ import math
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer
+from rosgraph_msgs.msg import Clock
+from sim_utils import EventScheduler 
 from rclpy.action.server import ServerGoalHandle
 from rclpy.executors import MultiThreadedExecutor
-from collections import OrderedDict, Counter
+from collections import Counter
 from std_msgs.msg import String
 from geometry_msgs.msg import Point, Vector3, Twist
 from nav_msgs.msg import Odometry
@@ -18,6 +20,7 @@ from project_interfaces.action import Patrol
 MIN_ALTITUDE_TO_PERFORM_PATROL = 15
 SIZE = 10
 
+WORLD_NAME = "iot_project_world"
 
 class BalloonController(Node):
 
@@ -56,29 +59,61 @@ class BalloonController(Node):
             'patrol',
             self.execute_patrol_action
         )
-        self.cache = OrderedDict()  # Used for LRU, FIFO, Random
+        self.bs_publisher = self.create_publisher(
+                String,
+                'bs',
+                10
+         )
+        self.cache = {}  # Used for LRU, FIFO, Random
         self.access_counter = Counter()  # Used for LFU
         self.cache_size = SIZE
         self.cache_policy = "Random"  # Change to "LFU", "FIFO", or "Random"
+        
+        self.event_scheduler = EventScheduler()
+        self.clock_topic = self.create_subscription(
+            Clock,
+            f'/world/{WORLD_NAME}/clock',
+            self.event_scheduler.routine,
+            10
+        )
 
+    def expiration_management(self, sensor_id):
+        self.get_logger().info(f"eliminazione dati id : {sensor_id}")
+        del self.cache[sensor_id]
+        del self.access_counter[sensor_id]
+
+        return
     def rx_callback(self, msg: String):
         if "bs:" in msg.data:
+            self.get_logger().info(f"in bs")
             # Base station is requesting data for a specific sensor
             sensor_id = msg.data.split(":")[1]
             data = self.access_cache(sensor_id)
-            if data:
+            if data is not None:
                 self.get_logger().info(f"Data for sensor {sensor_id} found in cache: {data}")
+                msg = String()
+                msg.data = f"{sensor_id}:{data}"
+                self.get_logger().info(f"AOOOOOOOOO STO INVIANDO ==============")
+                
+                self.bs_publisher.publish(msg) 
+
+
             else:
                 self.get_logger().info(f"Cache miss for sensor {sensor_id}")
+                msg = String()
+                msg.data = f"{sensor_id}:miss"
+                self.bs_publisher.publish(msg) 
                 # Handle cache miss, e.g., by fetching data from another source
         elif "Sensor"==msg.data.split(" ")[0]:
             # Sensor is sending data to be stored
             sensor_id=msg.data.split(":")[1].split("_")[0]
             sensor_data=msg.data.split(":")[1].split("_")[1]
-            self.get_logger().info(f"id:{sensor_id},data:{sensor_data}")
-            self.store_in_cache(sensor_id, sensor_data)
-            self.get_logger().info(f"Data for sensor {sensor_id} stored in cache.")
+            sensor_expiration=int(msg.data.split(":")[1].split("_")[2])
 
+
+            self.get_logger().info(f"id:{sensor_id},data:{sensor_data},expiration: {sensor_expiration}")
+            self.store_in_cache(sensor_id, sensor_data,sensor_expiration)
+            self.get_logger().info(f"Data for sensor {sensor_id} stored in cache.")
     def access_cache(self, key):
         if key in self.cache:
             if self.cache_policy == "LRU":
@@ -91,13 +126,18 @@ class BalloonController(Node):
         self.get_logger().info(f"Cache miss for {key}.")
         return None  # Cache miss
 
-    def store_in_cache(self, key, data):
-        if len(self.cache) >= self.cache_size:
+    def store_in_cache(self, key, data , scadenza):
+        if len(self.cache) == self.cache_size:
             self.evict_cache()
         self.cache[key] = data
-        self.get_logger().info(f"Stored {key}: {data} in cache. Current cache size: {len(self.cache)}.")
-        if self.cache_policy == "LFU":
-            self.access_counter[key] += 1
+        '''self.get_logger().info(f"Stored {key}: {data} in cache. Current cache size: {len(self.cache)}.")
+        self.event_scheduler.schedule_event(
+                scadenza,
+                self.expiration_management,
+                repeat=False,
+                args=[key]
+        )'''
+    
 
     def evict_cache(self):
         if self.cache_policy == "FIFO" or self.cache_policy == "LRU":

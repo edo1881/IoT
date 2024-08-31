@@ -81,7 +81,7 @@ class BaseStation(Node):
         """
         # Example: You could have different lambda values for different sensors
         # For now, we'll just use a fixed lambda value for all sensors
-        return 0.1 + (sensor_id * 0.02)   # Example, customize this as need
+        return 0.03 + (sensor_id * 0.003)   # Example, customize this as need
         
     def store_position(self, msg: Odometry):
         """
