@@ -4,7 +4,7 @@ import math
 import rclpy
 from rclpy.node import Node
 from rclpy.executors import MultiThreadedExecutor
-
+from collections import defaultdict
 from std_msgs.msg import String
 from geometry_msgs.msg import Point
 from nav_msgs.msg import Odometry
@@ -16,7 +16,7 @@ from project_interfaces.action import RequestSensor
 NUMBER_OF_BALLOONS = int(sys.argv[1])
 NUMBER_OF_SENSORS = int(sys.argv[2])
 
-SENSORS_RANGE = 20
+SENSORS_RANGE = 40
 
 class SimulationManager(Node):
 
@@ -24,11 +24,10 @@ class SimulationManager(Node):
 
         super().__init__('simulation_manager')
 
-        self.responses = {}
+        self.responses = defaultdict(list)
         self.sensor_positions = {}
         self.balloon_positions = {}
-
-        
+        self.balloon_per_sensor= {}
       
         for i in range(NUMBER_OF_SENSORS):
 
@@ -83,33 +82,25 @@ class SimulationManager(Node):
     
 
     def response_balloon(self, msg):
-         self.get_logger().info('$$$$$$$$$$$$ENTRATO IN RESPONSE BALOON$$$$$$$$$$$$$')
+         #self.get_logger().info('$$$$$$$$$$$$ENTRATO IN RESPONSE BALOON$$$$$$$$$$$$$')
          id = msg.data.split(":")[0]
-         dati = msg.data.split(":")[1]
+         sensor_id =msg.data.split(":")[1]
+         dati = msg.data.split(":")[2]
          self.get_logger().info('$$$$$$$$$$$$ENTRATO IN RESPONSE BALOON$$$$$$$$$$$$$')
-         self.get_logger().info(f"Data for sensor {id} found in cache: {dati}")
-
+         self.get_logger().info(f"[Request {id}]:data for sensor {sensor_id} found in cache: {dati}")
+         self.get_logger().info('$$$$$$$$$$$$ENTRATO IN RESPONSE BALOON$$$$$$$$$$$$$')
          #timestamp = msg.data.split("_")
-            
-         if self.responses.get(id) is None  : 
-           self.responses[id] = dati
+         self.responses[id].append(dati)    
+         '''if self.responses.get(id).count==0 is None:
+           self.get_logger().info(f"Ho inserito questi dati {dati}") 
+           self.responses[id].append(dati)
          else : 
              if "miss" not in dati : 
                   self.get_logger().info(f"un altro pallone ha già inviato i dati per questo sensore")
              else : 
-                 self.responses[id] = msg 
+                 self.get_logger().info(f"Ho inserito il miss : {dati}")
+          '''       
     
-                 
-                
-
-                 
-         
-
-
-          
-          
-          
-
 
 
     def store_sensor_position(self, sensor_id, position : Odometry):
@@ -127,69 +118,47 @@ class SimulationManager(Node):
                 if math_utils.point_distance(self.sensor_positions[sensor_id], self.balloon_positions[i]) < SENSORS_RANGE:
                     self.balloons_rx[i].publish(msg)
                     
-    def forward_data2bs(self, sensor_id):
+    def forward_data2bs(self, sensor_id,request_id):
+        self.get_logger().info(f"=======IN FDATA2BS========")
         # Check if sensor is within range of any balloon
-        success = False
         response_msg = String()
+        self.balloon_per_sensor[request_id] = 0
         for i in range(NUMBER_OF_BALLOONS):
+                self.get_logger().info(f"=======IN FOR========")
                 if math_utils.point_distance(self.sensor_positions[int(sensor_id)], self.balloon_positions[i]) < SENSORS_RANGE:
-                    response_msg = f"bs:{sensor_id}"
+                    self.get_logger().info(f"=======IN IF {i}========")
+                    self.balloon_per_sensor[request_id] += 1
+                    response_msg = f"bs:{sensor_id}:{request_id}"
                     response_msg_ros = String(data=response_msg)
                     self.balloons_rx[i].publish(response_msg_ros)
-                    success = True
-                    self.get_logger().info(f"Data sent via Balloon {i} for Sensor {sensor_id}")
-                    break
-        return success
+                    self.get_logger().info(f"Request sent via Balloon {i} for Sensor {sensor_id}")
     
         
     async def handle_sensor_request(self, goal_handle):
         """Handles sensor data requests from the BaseStation."""
-        sensor_id = goal_handle.request.bs_request
-        self.get_logger().info(f"Received request for sensor {sensor_id}")
+        sensor_id = goal_handle.request.bs_request.split(":")[0]
+        request_id = goal_handle.request.bs_request.split(":")[1]
+        self.get_logger().info(f"Received request for sensor {sensor_id},rid:{request_id}")
 
-        success = self.forward_data2bs(sensor_id)
+        self.forward_data2bs(sensor_id,request_id)
         c=0
-        while self.responses.get(sensor_id) is None  or ("miss" in str(self.responses.get(sensor_id)) ) or c==5:
+        while (self.responses.get(request_id) is None or any("miss" in str(value) for value in self.responses.get(request_id, [])))  and (self.responses.get(request_id) is None or len(self.responses.get(request_id)) < self.balloon_per_sensor[request_id]) and c<=7:
             c+=1
-            if self.responses.get(sensor_id) is None:
-                self.get_logger().info('==================================')
-                self.get_logger().info('==================================')
-                self.get_logger().info(f'ancora nessun dato  per sensore {sensor_id}, rimango in attesa...')
-                self.get_logger().info('==================================')
-                self.get_logger().info('==================================')
-                      
-            elif ("miss" in str(self.responses.get(sensor_id))) : 
-                 self.get_logger().info('==================================')
-                 self.get_logger().info('==================================')
-                 self.get_logger().info(f'rilevato cache miss per sensore {sensor_id}, rimango in attesa...')
-                 self.get_logger().info('==================================')
-                 self.get_logger().info('==================================')
-                 
-            
-            time.sleep(5.0)
-        
-      
+            self.get_logger().info(f'================in while sono in attesa ==============')
+            self.get_logger().info('==================================')
+            time.sleep(6.0)
+        test= str(any("miss" in str(value) for value in self.responses.get(request_id, [])))
         msg = String()
-        msg= self.responses[sensor_id]
+        msg= " ".join(val for val in self.responses.get(request_id, []))
         dato = msg
         # timestamp = msg.data.split("_")[2]
         self.get_logger().info('==================================')
-        self.get_logger().info('=============HIT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!===================')
+        self.get_logger().info(f'=============USCITO: {test} msg: {msg} request_id:{request_id} sensor:{sensor_id}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!===================')
         self.get_logger().info('==================================')       
-        if success:
-            goal_handle.succeed()
-            del self.responses[sensor_id]
-            result = RequestSensor.Result()
-            result.balloons_response = f"Data successfully received from sensor {sensor_id} : {dato}."
-            return result
-        else:
-            goal_handle.abort()
-            result = RequestSensor.Result()
-            result.balloons_response = f"Failed to retrieve data from sensor {sensor_id}. Sensor may be out of range."
-            return result
-
-
-
+        goal_handle.succeed()
+        result = RequestSensor.Result()
+        result.balloons_response = f"Data successfully received from sensor {sensor_id} : {dato}."
+        return result
 
 def main():
 

@@ -1,3 +1,4 @@
+import random
 import time
 import math
 
@@ -18,7 +19,7 @@ from project_interfaces.action import Patrol
 
 
 MIN_ALTITUDE_TO_PERFORM_PATROL = 15
-SIZE = 10
+SIZE = 2
 
 WORLD_NAME = "iot_project_world"
 
@@ -88,20 +89,20 @@ class BalloonController(Node):
             self.get_logger().info(f"in bs")
             # Base station is requesting data for a specific sensor
             sensor_id = msg.data.split(":")[1]
+            request_id = msg.data.split(":")[2]
             data = self.access_cache(sensor_id)
+            self.get_logger().info(f"========RICEVUTO:{sensor_id} request_id: {request_id}========")
             if data is not None:
                 self.get_logger().info(f"Data for sensor {sensor_id} found in cache: {data}")
                 msg = String()
-                msg.data = f"{sensor_id}:{data}"
-                self.get_logger().info(f"AOOOOOOOOO STO INVIANDO ==============")
-                
+                msg.data = f"{request_id}:{sensor_id}:{data}"
                 self.bs_publisher.publish(msg) 
 
 
             else:
                 self.get_logger().info(f"Cache miss for sensor {sensor_id}")
                 msg = String()
-                msg.data = f"{sensor_id}:miss"
+                msg.data = f"{request_id}:{sensor_id}:miss"
                 self.bs_publisher.publish(msg) 
                 # Handle cache miss, e.g., by fetching data from another source
         elif "Sensor"==msg.data.split(" ")[0]:
@@ -109,11 +110,8 @@ class BalloonController(Node):
             sensor_id=msg.data.split(":")[1].split("_")[0]
             sensor_data=msg.data.split(":")[1].split("_")[1]
             sensor_expiration=int(msg.data.split(":")[1].split("_")[2])
-
-
-            self.get_logger().info(f"id:{sensor_id},data:{sensor_data},expiration: {sensor_expiration}")
+            #self.get_logger().info(f"id:{sensor_id},data:{sensor_data},expiration: {sensor_expiration}")
             self.store_in_cache(sensor_id, sensor_data,sensor_expiration)
-            self.get_logger().info(f"Data for sensor {sensor_id} stored in cache.")
     def access_cache(self, key):
         if key in self.cache:
             if self.cache_policy == "LRU":
@@ -127,9 +125,15 @@ class BalloonController(Node):
         return None  # Cache miss
 
     def store_in_cache(self, key, data , scadenza):
+        flag = False
+        if key not in self.cache:
+            flag=True
         if len(self.cache) == self.cache_size:
             self.evict_cache()
+        
         self.cache[key] = data
+        #if flag: 
+         #   self.get_logger().info(f"Data for sensor {key} stored in cache.")
         '''self.get_logger().info(f"Stored {key}: {data} in cache. Current cache size: {len(self.cache)}.")
         self.event_scheduler.schedule_event(
                 scadenza,

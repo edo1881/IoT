@@ -15,16 +15,16 @@ NUMBER_OF_BALLOONS = int(sys.argv[1])
 NUMBER_OF_SENSORS = int(sys.argv[2])
 WORLD_NAME = "iot_project_world"
 class BaseStation(Node):
-
     def __init__(self):
         super().__init__('simulation_manager')
+        self.id = 0
 	    # Initialize action client for requesting sensor data
         self._action_client = ActionClient(self, RequestSensor, 'sensor_request')
         
         self.sensor_data = {}  # Stores received sensor data
         self.missing_data = {}  # Keeps track of missing data requests
         self.hit_data = {}
-    
+
         # Optionally subscribe to the odometry topic if needed
         self.create_subscription(
             Odometry,
@@ -62,16 +62,16 @@ class BaseStation(Node):
         """
         Send a request to the SimulationManager to retrieve data from a specific sensor.
         """
-        self.get_logger().info(f"Requesting data from sensor {sensor_id}")
+        self.get_logger().info(f"Requesting data from sensor {sensor_id}:{self.id}")
 
         goal_msg = RequestSensor.Goal()
-        goal_msg.bs_request = str(sensor_id)
-
+        goal_msg.bs_request = f"{sensor_id}:{self.id}"
         self._action_client.wait_for_server()
         send_goal_future = self._action_client.send_goal_async(
             goal_msg,
             feedback_callback=self.feedback_callback
         )
+        self.id+=1
         send_goal_future.add_done_callback(self.goal_response_callback)
 
     
@@ -104,7 +104,9 @@ class BaseStation(Node):
         goal_handle = future.result()
         result = goal_handle.get_result().result
         if True:
+            self.get_logger().info('============ BASE STATION ===================')
             self.get_logger().info(f"Data received successfully for sensor {result.balloons_response}")
+            self.get_logger().info('==================================')
 
             # Process the data here if necessary
         else:
