@@ -1,7 +1,8 @@
 import random
 import time
 import math
-
+import threading
+import math_utils
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer
@@ -9,12 +10,10 @@ from rosgraph_msgs.msg import Clock
 from sim_utils import EventScheduler 
 from rclpy.action.server import ServerGoalHandle
 from rclpy.executors import MultiThreadedExecutor
-from collections import Counter
+from collections import Counter,OrderedDict
 from std_msgs.msg import String
 from geometry_msgs.msg import Point, Vector3, Twist
 from nav_msgs.msg import Odometry
-
-import math_utils
 from project_interfaces.action import Patrol
 
 
@@ -27,7 +26,8 @@ class BalloonController(Node):
 
     def __init__(self):
         super().__init__("drone_controller")
-
+        self.semaphore = True
+        self.lock=threading.Lock()
         self.position = Point(x = 0.0, y = 0.0, z = 0.0)
         self.yaw = 0
 
@@ -65,10 +65,10 @@ class BalloonController(Node):
                 'bs',
                 10
          )
-        self.cache = {}  # Used for LRU, FIFO, Random
+        self.cache = OrderedDict() # Used for LRU, FIFO, Random
         self.access_counter = Counter()  # Used for LFU
         self.cache_size = SIZE
-        self.cache_policy = "Random"  # Change to "LFU", "FIFO", or "Random"
+        self.cache_policy = "LRU"  # Change to "LFU", "FIFO", or "Random"
         
         self.event_scheduler = EventScheduler()
         self.clock_topic = self.create_subscription(
@@ -78,12 +78,23 @@ class BalloonController(Node):
             10
         )
 
-    def expiration_management(self, sensor_id):
-        self.get_logger().info(f"eliminazione dati id : {sensor_id}")
-        del self.cache[sensor_id]
-        del self.access_counter[sensor_id]
-
+    def expiration_management(self,sensor_id,id):
+        while self.semaphore==False:
+            time.sleep(0.1)
+        with self.lock:
+            self.semaphore=False
+            if self.cache.get(sensor_id) is not None and self.cache[sensor_id][0]==id:
+                self.get_logger().info(f"sensor_id: {sensor_id} same values, going to delete sent_id: {id}, sent_id_cache : {self.cache[sensor_id][0]}")
+                del self.cache[sensor_id]
+                del self.access_counter[sensor_id]
+            else:
+                if self.cache.get(sensor_id)is None:
+                    self.get_logger().info(f" ===== key already evicted ======")
+                else:
+                    self.get_logger().info(f"sensor_id: {sensor_id} different values sent_id: {id}, sent_id_cache {self.cache[sensor_id][0]}")
+            self.semaphore=True
         return
+    
     def rx_callback(self, msg: String):
         if "bs:" in msg.data:
             self.get_logger().info(f"in bs")
@@ -91,27 +102,29 @@ class BalloonController(Node):
             sensor_id = msg.data.split(":")[1]
             request_id = msg.data.split(":")[2]
             data = self.access_cache(sensor_id)
-            self.get_logger().info(f"========RICEVUTO:{sensor_id} request_id: {request_id}========")
+            #self.get_logger().info(f"========RICEVUTO:{sensor_id} request_id: {request_id}========")
             if data is not None:
-                self.get_logger().info(f"Data for sensor {sensor_id} found in cache: {data}")
+                #self.get_logger().info(f"Data for sensor {sensor_id} found in cache: {data}")
                 msg = String()
                 msg.data = f"{request_id}:{sensor_id}:{data}"
                 self.bs_publisher.publish(msg) 
 
 
             else:
-                self.get_logger().info(f"Cache miss for sensor {sensor_id}")
+                #self.get_logger().info(f"Cache miss for sensor {sensor_id}")
                 msg = String()
                 msg.data = f"{request_id}:{sensor_id}:miss"
                 self.bs_publisher.publish(msg) 
                 # Handle cache miss, e.g., by fetching data from another source
+    
         elif "Sensor"==msg.data.split(" ")[0]:
             # Sensor is sending data to be stored
             sensor_id=msg.data.split(":")[1].split("_")[0]
             sensor_data=msg.data.split(":")[1].split("_")[1]
-            sensor_expiration=int(msg.data.split(":")[1].split("_")[2])
-            #self.get_logger().info(f"id:{sensor_id},data:{sensor_data},expiration: {sensor_expiration}")
-            self.store_in_cache(sensor_id, sensor_data,sensor_expiration)
+            sensor_expiration=int(msg.data.split(":")[1].split("_")[3])
+            sent_id=msg.data.split(":")[1].split("_")[2]
+            self.get_logger().info(f"id:{sensor_id}, data:{sensor_data}, sent_id: {sent_id}, expiration: {sensor_expiration}")
+            self.store_in_cache(sensor_id, sensor_data,sensor_expiration, sent_id)
     def access_cache(self, key):
         if key in self.cache:
             if self.cache_policy == "LRU":
@@ -124,23 +137,20 @@ class BalloonController(Node):
         self.get_logger().info(f"Cache miss for {key}.")
         return None  # Cache miss
 
-    def store_in_cache(self, key, data , scadenza):
-        flag = False
-        if key not in self.cache:
-            flag=True
+    def store_in_cache(self, key, data , scadenza, sent_id):
         if len(self.cache) == self.cache_size:
             self.evict_cache()
         
-        self.cache[key] = data
+        self.cache[key] = [sent_id,data,scadenza] 
         #if flag: 
          #   self.get_logger().info(f"Data for sensor {key} stored in cache.")
-        '''self.get_logger().info(f"Stored {key}: {data} in cache. Current cache size: {len(self.cache)}.")
+        #self.get_logger().info(f"Stored {key}: {data} in cache. Current cache size: {len(self.cache)}.")
         self.event_scheduler.schedule_event(
                 scadenza,
                 self.expiration_management,
                 repeat=False,
-                args=[key]
-        )'''
+                args=[key,sent_id]
+        )
     
 
     def evict_cache(self):
@@ -161,15 +171,6 @@ class BalloonController(Node):
 
     def display_cache(self):
         self.get_logger().info(f"Cache content ({self.cache_policy}): {list(self.cache.keys())}")
-
-    def store_position(self, odometry_msg: Odometry):
-        self.position = odometry_msg.pose.pose.position
-        self.yaw = math_utils.get_yaw(
-            odometry_msg.pose.pose.orientation.x,
-            odometry_msg.pose.pose.orientation.y,
-            odometry_msg.pose.pose.orientation.z,
-            odometry_msg.pose.pose.orientation.w
-        )
 
     def store_position(self, odometry_msg : Odometry):
 
