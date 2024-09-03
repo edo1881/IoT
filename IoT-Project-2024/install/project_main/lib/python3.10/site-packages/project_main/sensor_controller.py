@@ -1,3 +1,4 @@
+import time
 import rclpy
 import random
 import math
@@ -24,6 +25,7 @@ class SensorController(Node):
         self.y_limit=100
         self.position = Point(x = 0.0, y = 0.0, z = 0.0)
         self.yaw = 0
+        self.stop_msg = Twist()
         self.tx_topic = self.create_publisher(
             String,
             'tx_data',
@@ -38,7 +40,7 @@ class SensorController(Node):
         self.odometry_subscriber = self.create_subscription(
             Odometry,
             'odometry',
-            self.store_position,
+            self.store_position_sensor,
             10
         )
         self.id = self.declare_parameter('id', -1)
@@ -53,8 +55,11 @@ class SensorController(Node):
             self.event_scheduler.routine,
             10
         )
+       
         lambda_value = 0.04 + (self.id.get_parameter_value().integer_value * 0.001)   
         self.event_scheduler.schedule_event(1/lambda_value, self.simple_publish,args=[lambda_value])
+        time.sleep(15)
+        self.event_scheduler.schedule_event((1/lambda_value)*2.1,self.execute_patrol_action)
 
     def simple_publish(self,lambda_value):
         id = self.id.get_parameter_value().integer_value
@@ -68,7 +73,7 @@ class SensorController(Node):
         self.generated_data += 1
         return self.generated_data
     
-    def store_position(self, odometry_msg : Odometry):
+    def store_position_sensor(self, odometry_msg: Odometry):
         self.position = odometry_msg.pose.pose.position
         self.yaw = math_utils.get_yaw(
             odometry_msg.pose.pose.orientation.x,
@@ -76,23 +81,36 @@ class SensorController(Node):
             odometry_msg.pose.pose.orientation.z,
             odometry_msg.pose.pose.orientation.w
         )
+        if self.position.x > 45 or self.position.x < -45 or self.position.y > 45 or self.position.y < -45:
+             stop_msg = Twist()
+             stop_msg.linear = Vector3(x=-1.0, y=0.0, z=0.0)
+             stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
+             self.cmd_vel_publisher.publish(stop_msg)
+             time.sleep(4)
+             stop_msg = Twist()
+             stop_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
+             stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
+             self.cmd_vel_publisher.publish(stop_msg)
+
     def execute_patrol_action(self):
-        random_x = random.randint(-3,3)
-        random_y = random.randint(-3,3)
-        target  = self.position     
-        self.rotate_to_target(target)
-        self.move_to_target(target)
-        self.get_logger().info(f"Movement to target {targets_patrolled} completed!")
-        targets_patrolled += 1
-        
-        
-        goal.succeed()
+        id = self.id.get_parameter_value().integer_value
+        target = float(random.randint(-1,1))
+        stop_msg = Twist()
+        stop_msg.linear = Vector3(x=target, y=0.0, z=0.0)
+        stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
+        self.cmd_vel_publisher.publish(stop_msg)
+        time.sleep(2)
+        stop_msg = Twist()
+        stop_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
+        stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.5)
+        self.cmd_vel_publisher.publish(stop_msg)
+        time.sleep(1)
+        stop_msg = Twist()
+        stop_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
+        stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
+        self.cmd_vel_publisher.publish(stop_msg)
 
-        result =  Patrol.Result()
-        result.result = "Movement completed"
-
-        return result
-     def rotate_to_target(self, target, eps = 0.5):
+    def rotate_to_target_sensor(self, target, eps = 0.5):
 
         # We compute the angle between the current target position and the target
         # position here
@@ -101,7 +119,7 @@ class SensorController(Node):
 
         # Normalize the angle difference to be within the range [-pi, pi]
         angle_to_rotate = (angle_to_rotate + math.pi) % (2 * math.pi) - math.pi
-
+        #self.get_logger().info(f"in rotate {angle_to_rotate} Rotation: {self.yaw}")
         # And then assign the direction of the rotation correctly
         rotation_dir = 1 if angle_to_rotate < 0 else -1
         
@@ -118,8 +136,13 @@ class SensorController(Node):
         # You can account for that by also giving some z linear speed to the rotation movement.
         while abs(angle_to_rotate) > eps:
             angle_to_rotate = target_angle - self.yaw
+            #self.cmd_vel_publisher.publish(move_msg)
+            #self.get_logger().info(f"in rotate {angle_to_rotate} Rotation: {self.yaw}")
+            #stop_msg = Twist()
+            #stop_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
+            #stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
+            #self.cmd_vel_publisher.publish(stop_msg)
 
-            # self.get_logger().info(f"Rotation: {self.yaw}")
             # No sleep here. We don't want to miss the angle by sleeping too much. Even 0.1 seconds
             # could make us miss the given epsilon interval
 
@@ -130,7 +153,7 @@ class SensorController(Node):
         stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
         self.cmd_vel_publisher.publish(stop_msg)
 
-    def move_to_target(self, target, eps = 0.5, angle_eps = 0.02):
+    def move_to_target_sensor(self, target, eps = 0.5, angle_eps = 0.02):
 
 
         # Save the target position and compute the distance

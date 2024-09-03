@@ -33,14 +33,14 @@ class SimulationManager(Node):
 
             self.create_subscription(
                 Odometry,
-                f'Sensor_{i}/odometry',
+                f'ActiveSensor_{i}/odometry',
                 lambda odometry_msg, sensor_id = i: self.store_sensor_position(sensor_id, odometry_msg),
                 10
             )
 
             self.create_subscription(
                 String,
-                f'Sensor_{i}/tx_data',
+                f'ActiveSensor_{i}/tx_data',
                 lambda string_msg, sensor_id = i: self.forward_data(sensor_id, string_msg),
                 10
             )
@@ -89,7 +89,6 @@ class SimulationManager(Node):
 
 
     def store_sensor_position(self, sensor_id, position : Odometry):
-
         self.sensor_positions[sensor_id] = position.pose.pose.position
 
 
@@ -138,7 +137,7 @@ class SimulationManager(Node):
         goal_handle.succeed()
         result = RequestSensor.Result()
         result.balloons_response = f"Data successfully received from sensor {sensor_id} : {dato}."
-        del self.responses[request_id]
+        #del self.responses[request_id]
         return result
 
 def main():

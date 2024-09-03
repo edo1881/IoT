@@ -2,7 +2,7 @@ import sys
 from time import sleep
 from threading import Thread
 from enum import Enum
-
+import math_utils
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionClient
@@ -49,7 +49,7 @@ class FleetCoordinator(Node):
         for i in range(NUMBER_OF_SENSORS):
             self.create_subscription(
                 Odometry,
-                f'Sensor_{i}/odometry',
+                f'ActiveSensor_{i}/odometry',
                 lambda msg, id = i : self.store_sensor_position(id, msg),
                 10
             )
@@ -134,8 +134,17 @@ class FleetCoordinator(Node):
 
 
     def store_sensor_position(self, id, msg : Odometry):
+        if id==1:
+            yaw = math_utils.get_yaw(
+            msg.pose.pose.orientation.x,
+            msg.pose.pose.orientation.y,
+            msg.pose.pose.orientation.z,
+            msg.pose.pose.orientation.w
+            )
+    #        self.get_logger().info(f"yaw {yaw} {msg.pose.pose.orientation.x},y:{msg.pose.pose.orientation.y},z:{msg.pose.pose.orientation.z}")
+        
         self.sensor_positions[id] = msg.pose.pose.position
-
+#
 
 
 class BalloonState(Enum):

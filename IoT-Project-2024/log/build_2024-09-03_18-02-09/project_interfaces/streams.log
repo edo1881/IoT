@@ -1,0 +1,258 @@
+[0.010s] Invoking command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zephyrus/Desktop/IoT/IoT-Project-2024/install/project_main:/opt/ros/humble /usr/bin/cmake /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces -DCMAKE_INSTALL_PREFIX=/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces
+[0.049s] -- The C compiler identification is GNU 11.4.0
+[0.085s] -- The CXX compiler identification is GNU 11.4.0
+[0.093s] -- Detecting C compiler ABI info
+[0.141s] -- Detecting C compiler ABI info - done
+[0.148s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.148s] -- Detecting C compile features
+[0.148s] -- Detecting C compile features - done
+[0.150s] -- Detecting CXX compiler ABI info
+[0.208s] -- Detecting CXX compiler ABI info - done
+[0.213s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.213s] -- Detecting CXX compile features
+[0.213s] -- Detecting CXX compile features - done
+[0.215s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.316s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.369s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.370s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.374s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.399s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.419s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.665s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[0.829s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.050s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.066s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[1.066s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.082s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[1.082s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.082s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.082s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.096s] -- Found PythonExtra: .so  
+[1.136s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.146s] -- Added test 'lint_cmake' to check CMake code style
+[1.146s] -- Added test 'xmllint' to check XML markup files
+[1.146s] -- Configuring done
+[1.167s] -- Generating done
+[1.169s] -- Build files have been written to: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces
+[1.175s] Invoked command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zephyrus/Desktop/IoT/IoT-Project-2024/install/project_main:/opt/ros/humble /usr/bin/cmake /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/src/project_interfaces -DCMAKE_INSTALL_PREFIX=/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces
+[1.176s] Invoking command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zephyrus/Desktop/IoT/IoT-Project-2024/install/project_main:/opt/ros/humble /usr/bin/cmake --build /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces -- -j12 -l12
+[1.202s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.208s] [  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.214s] [  5%] Built target ament_cmake_python_copy_project_interfaces
+[1.377s] running egg_info
+[1.377s] creating project_interfaces.egg-info
+[1.377s] writing project_interfaces.egg-info/PKG-INFO
+[1.377s] writing dependency_links to project_interfaces.egg-info/dependency_links.txt
+[1.378s] writing top-level names to project_interfaces.egg-info/top_level.txt
+[1.378s] writing manifest file 'project_interfaces.egg-info/SOURCES.txt'
+[1.379s] reading manifest file 'project_interfaces.egg-info/SOURCES.txt'
+[1.379s] writing manifest file 'project_interfaces.egg-info/SOURCES.txt'
+[1.400s] [  5%] Built target ament_cmake_python_build_project_interfaces_egg
+[1.609s] [  7%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_generator_c.dir/rosidl_generator_c/project_interfaces/action/detail/request_sensor__functions.c.o[0m
+[1.610s] [ 10%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_generator_c.dir/rosidl_generator_c/project_interfaces/action/detail/patrol__functions.c.o[0m
+[1.612s] [ 10%] Built target project_interfaces__cpp
+[1.619s] [ 15%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.619s] [ 15%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.620s] [ 17%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.697s] [ 20%] [32m[1mLinking C shared library libproject_interfaces__rosidl_generator_c.so[0m
+[1.727s] [ 20%] Built target project_interfaces__rosidl_generator_c
+[1.734s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.734s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.736s] [ 28%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.873s] [ 30%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/project_interfaces/action/patrol__type_support.cpp.o[0m
+[1.873s] [ 33%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/project_interfaces/action/request_sensor__type_support.cpp.o[0m
+[1.995s] [ 35%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/project_interfaces/action/detail/request_sensor__type_support.cpp.o[0m
+[1.997s] [ 38%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/project_interfaces/action/detail/patrol__type_support.cpp.o[0m
+[2.001s] [ 41%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/project_interfaces/action/detail/dds_fastrtps/patrol__type_support.cpp.o[0m
+[2.001s] [ 43%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/project_interfaces/action/detail/dds_fastrtps/request_sensor__type_support.cpp.o[0m
+[2.090s] [ 46%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/project_interfaces/action/detail/request_sensor__type_support.c.o[0m
+[2.092s] [ 48%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/project_interfaces/action/detail/patrol__type_support.c.o[0m
+[2.127s] [ 51%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/project_interfaces/action/detail/request_sensor__type_support_c.cpp.o[0m
+[2.130s] [ 53%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/project_interfaces/action/detail/patrol__type_support_c.cpp.o[0m
+[2.154s] [ 58%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/project_interfaces/action/patrol__type_support.cpp.o[0m
+[2.154s] [ 58%] [32m[1mLinking C shared library libproject_interfaces__rosidl_typesupport_introspection_c.so[0m
+[2.154s] [ 61%] [32mBuilding CXX object CMakeFiles/project_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/project_interfaces/action/request_sensor__type_support.cpp.o[0m
+[2.182s] [ 61%] Built target project_interfaces__rosidl_typesupport_introspection_c
+[2.185s] [ 64%] [32m[1mLinking CXX shared library libproject_interfaces__rosidl_typesupport_cpp.so[0m
+[2.206s] [ 66%] [32m[1mLinking CXX shared library libproject_interfaces__rosidl_typesupport_c.so[0m
+[2.226s] [ 66%] Built target project_interfaces__rosidl_typesupport_cpp
+[2.261s] [ 66%] Built target project_interfaces__rosidl_typesupport_c
+[2.439s] [ 69%] [32m[1mLinking CXX shared library libproject_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.464s] [ 71%] [32m[1mLinking CXX shared library libproject_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[2.468s] [ 74%] [32m[1mLinking CXX shared library libproject_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[2.494s] [ 74%] Built target project_interfaces__rosidl_typesupport_fastrtps_cpp
+[2.517s] [ 74%] Built target project_interfaces__rosidl_typesupport_introspection_cpp
+[2.519s] [ 74%] Built target project_interfaces__rosidl_typesupport_fastrtps_c
+[2.532s] [ 74%] Built target project_interfaces
+[2.547s] [ 76%] [34m[1mGenerating Python code for ROS interfaces[0m
+[3.235s] [ 76%] Built target project_interfaces__py
+[3.252s] [ 79%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_generator_py.dir/rosidl_generator_py/project_interfaces/action/_patrol_s.c.o[0m
+[3.254s] [ 82%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_generator_py.dir/rosidl_generator_py/project_interfaces/action/_request_sensor_s.c.o[0m
+[3.339s] [ 84%] [32m[1mLinking C shared library rosidl_generator_py/project_interfaces/libproject_interfaces__rosidl_generator_py.so[0m
+[3.373s] [ 84%] Built target project_interfaces__rosidl_generator_py
+[3.386s] [ 87%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.386s] [ 89%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.388s] [ 92%] [32mBuilding C object CMakeFiles/project_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[3.476s] [ 94%] [32m[1mLinking C shared library rosidl_generator_py/project_interfaces/project_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.477s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/project_interfaces/project_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.477s] [100%] [32m[1mLinking C shared library rosidl_generator_py/project_interfaces/project_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.505s] [100%] Built target project_interfaces__rosidl_typesupport_c__pyext
+[3.505s] [100%] Built target project_interfaces__rosidl_typesupport_introspection_c__pyext
+[3.506s] [100%] Built target project_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[3.514s] Invoked command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zephyrus/Desktop/IoT/IoT-Project-2024/install/project_main:/opt/ros/humble /usr/bin/cmake --build /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces -- -j12 -l12
+[3.583s] Invoking command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zephyrus/Desktop/IoT/IoT-Project-2024/install/project_main:/opt/ros/humble /usr/bin/cmake --install /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces
+[3.587s] -- Install configuration: ""
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/ament_index/resource_index/rosidl_interfaces/project_interfaces
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg/rosidl_generator_c__visibility_control.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__functions.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__type_support.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__struct.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__struct.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__functions.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__type_support.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__functions.c
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__functions.c
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/patrol.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/request_sensor.h
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/library_path.sh
+[3.588s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/library_path.dsv
+[3.589s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_generator_c.so
+[3.589s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_generator_c.so" to ""
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg
+[3.589s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail
+[3.589s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__rosidl_typesupport_fastrtps_c.h
+[3.589s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__rosidl_typesupport_fastrtps_c.h
+[3.589s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_fastrtps_c.so
+[3.589s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg
+[3.589s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action
+[3.589s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__rosidl_typesupport_introspection_c.h
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__type_support.c
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__rosidl_typesupport_introspection_c.h
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__type_support.c
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_introspection_c.so
+[3.590s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_c.so
+[3.590s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_c.so" to ""
+[3.590s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces
+[3.590s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action
+[3.590s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__traits.hpp
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__builder.hpp
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__struct.hpp
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__builder.hpp
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__traits.hpp
+[3.590s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__struct.hpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/request_sensor.hpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/patrol.hpp
+[3.591s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces
+[3.591s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[3.591s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action
+[3.591s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__rosidl_typesupport_fastrtps_cpp.hpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/dds_fastrtps
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__rosidl_typesupport_fastrtps_cpp.hpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[3.591s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[3.591s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces
+[3.591s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action
+[3.591s] -- Up-to-date: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__rosidl_typesupport_introspection_cpp.hpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__type_support.cpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/request_sensor__type_support.cpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/include/project_interfaces/project_interfaces/action/detail/patrol__rosidl_typesupport_introspection_cpp.hpp
+[3.591s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_introspection_cpp.so
+[3.592s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_cpp.so
+[3.592s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_typesupport_cpp.so" to ""
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/pythonpath.sh
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/pythonpath.dsv
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces-1.0.0-py3.10.egg-info
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces-1.0.0-py3.10.egg-info/SOURCES.txt
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces-1.0.0-py3.10.egg-info/dependency_links.txt
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces-1.0.0-py3.10.egg-info/top_level.txt
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces-1.0.0-py3.10.egg-info/PKG-INFO
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/__init__.py
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_c.c
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/__init__.py
+[3.592s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/_request_sensor_s.c
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/_request_sensor.py
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/_patrol.py
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/_patrol_s.c
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/_project_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/libproject_interfaces__rosidl_generator_py.so
+[3.593s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.621s] Listing '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces'...
+[3.621s] Compiling '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/__init__.py'...
+[3.621s] Listing '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action'...
+[3.621s] Compiling '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/__init__.py'...
+[3.621s] Compiling '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/_patrol.py'...
+[3.621s] Compiling '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/action/_request_sensor.py'...
+[3.624s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.624s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.624s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.625s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.625s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.625s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/local/lib/python3.10/dist-packages/project_interfaces/project_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.625s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_generator_py.so
+[3.625s] -- Set runtime path of "/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/lib/libproject_interfaces__rosidl_generator_py.so" to ""
+[3.625s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/action/Patrol.idl
+[3.625s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/action/RequestSensor.idl
+[3.625s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/action/Patrol.action
+[3.625s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/action/RequestSensor.action
+[3.625s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/ament_index/resource_index/package_run_dependencies/project_interfaces
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/ament_index/resource_index/parent_prefix_path/project_interfaces
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/ament_prefix_path.sh
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/ament_prefix_path.dsv
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/path.sh
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/environment/path.dsv
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/local_setup.bash
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/local_setup.sh
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/local_setup.zsh
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/local_setup.dsv
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/package.dsv
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/ament_index/resource_index/packages/project_interfaces
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_generator_cExport.cmake
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_generator_cExport-noconfig.cmake
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[3.626s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_cExport.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_generator_cppExport.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_cppExport.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_generator_pyExport.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/export_project_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/rosidl_cmake-extras.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[3.627s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[3.628s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[3.628s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfacesConfig.cmake
+[3.628s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/cmake/project_interfacesConfig-version.cmake
+[3.628s] -- Installing: /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/install/project_interfaces/share/project_interfaces/package.xml
+[3.629s] Invoked command in '/home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zephyrus/Desktop/IoT/IoT-Project-2024/install/project_main:/opt/ros/humble /usr/bin/cmake --install /home/zephyrus/Desktop/IoT/IoT/IoT-Project-2024/build/project_interfaces
