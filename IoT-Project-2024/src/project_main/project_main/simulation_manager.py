@@ -137,7 +137,7 @@ class SimulationManager(Node):
         goal_handle.succeed()
         result = RequestSensor.Result()
         result.balloons_response = f"Data successfully received from sensor {sensor_id} : {dato}."
-        #del self.responses[request_id]
+        del self.responses[request_id]
         return result
 
 def main():

@@ -188,8 +188,7 @@ class BalloonController(Node):
 
         command_goal : Patrol.Goal = goal.request
 
-        self.get_logger().info(f"Action requested. Performing movement to targets:\n\t{command_goal.targets}")
-
+        #self.get_logger().info(f"Action requested. Performing initial flight")
         self.fly_to_altitude(MIN_ALTITUDE_TO_PERFORM_PATROL)
         goal.succeed()
 

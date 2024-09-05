@@ -63,7 +63,7 @@ class BaseStation(Node):
         Send a request to the SimulationManager to retrieve data from a specific sensor.
         """
         self.get_logger().info(f"Requesting data from sensor {sensor_id}:{self.id}")
-
+        self.id+=1
         goal_msg = RequestSensor.Goal()
         goal_msg.bs_request = f"{sensor_id}:{self.id}"
         self._action_client.wait_for_server()
@@ -71,7 +71,6 @@ class BaseStation(Node):
             goal_msg,
             feedback_callback=self.feedback_callback
         )
-        self.id+=1
         send_goal_future.add_done_callback(self.goal_response_callback)
 
     
@@ -103,15 +102,9 @@ class BaseStation(Node):
     def result_callback(self, future):
         goal_handle = future.result()
         result = goal_handle.get_result().result
-        if True:
-            self.get_logger().info('============ BASE STATION ===================')
-            self.get_logger().info(f"Data received successfully for sensor {result.balloons_response}")
-            self.get_logger().info('==================================')
-
-            # Process the data here if necessary
-        else:
-            self.get_logger().info(f"Data request failed for sensor {result.balloons_response}")
-            # Handle missing data
+        self.get_logger().info('============ BASE STATION ===================')
+        self.get_logger().info(f"Data received successfully for sensor {result.balloons_response}")
+        self.get_logger().info('==================================')
 
     def feedback_callback(self, feedback_msg):
         self.get_logger().info(f"Feedback received: {feedback_msg.feedback.feed}")

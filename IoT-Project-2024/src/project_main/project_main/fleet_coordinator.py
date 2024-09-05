@@ -87,21 +87,21 @@ class FleetCoordinator(Node):
         # Set the Balloon to moving state
         self.balloon_states[uav_id] = BalloonState.MOVING
         goal = Patrol.Goal()
-        goal.targets = []
+        goal.action = "Performing flight"
 
         # Just iterate through all the sensors in a round-robin fashion
-        for target in range(len(self.sensor_positions)):
+        #for target in range(len(self.sensor_positions)):
+#
+        #    # Start from the sensor with the id equal to the balloon id
+        #    actual_target = (target + uav_id) % len(self.sensor_positions)
+        #    goal.targets.append(self.sensor_positions[actual_target])
+#
+        #    # Set the height to a predefined value, as the sensors will be on the ground, we want to hover them
+        #    goal.targets[-1].z = HOVERING_HEIGHT + (uav_id * 8.0)
 
-            # Start from the sensor with the id equal to the balloon id
-            actual_target = (target + uav_id) % len(self.sensor_positions)
-            goal.targets.append(self.sensor_positions[actual_target])
-
-            # Set the height to a predefined value, as the sensors will be on the ground, we want to hover them
-            goal.targets[-1].z = HOVERING_HEIGHT + (uav_id * 8.0)
 
 
-
-        self.get_logger().info(f"Submitting task for Balloon {uav_id}")
+        #self.get_logger().info(f"Submitting task for Balloon {uav_id}")
 
         # Submit the task here and add a callback for when the submission is accepted
         patrol_future = self.balloon_action_clients[uav_id].send_goal_async(goal)
@@ -129,7 +129,7 @@ class FleetCoordinator(Node):
 
         # Action completed, Balloon can go back to hovering. Note that we don't check if the patrol was correctly completed,
         # you may have to handle such cases
-        self.get_logger().info(f"Patrolling action for Balloon {uav_id} has been completed. Drone is going idle")
+        #self.get_logger().info(f"Patrolling action for Balloon {uav_id} has been completed. Drone is going idle")
         self.balloon_states[uav_id] = BalloonState.HOVERING
 
 

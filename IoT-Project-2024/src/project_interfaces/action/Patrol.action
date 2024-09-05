@@ -1,4 +1,4 @@
-geometry_msgs/Point[] targets
+string action
 ---
 string result
 ---
