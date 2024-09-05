@@ -17,8 +17,8 @@ from project_main.sim_utils import spawn_sdf
 
 WORLD_NAME = "iot_project_world"
 
-NUMBER_OF_BALLOONS = 3
-NUMBER_OF_SENSORS = 3
+NUMBER_OF_BALLOONS = 5
+NUMBER_OF_SENSORS = 15
 
 #-----------------------------------------------------------------------------------------------
 # Launch file for the IoT Project. Launches all the nodes required to start the final solution
@@ -72,7 +72,16 @@ def generate_launch_description():
 
     #-------------------------- Spawn balloons and bridge their topics ---------------------------
     for i in range(NUMBER_OF_BALLOONS):
-        targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (0, i*5, 0)))
+        if i == 0:
+            targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (0, 0, 0)))
+        elif i == 1:
+            targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (30, 30, 0)))
+        elif i == 2:
+             targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (-30, 30, 0)))
+        elif i == 3:
+             targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (30, -30, 0)))
+        elif i == 4:
+             targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (-30, -30, 0)))
 
         # Spawn bridge for cmd_vel and odometry for each of the spawned object
         targets_to_spawn.append(

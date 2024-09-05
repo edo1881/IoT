@@ -58,7 +58,6 @@ class SensorController(Node):
        
         lambda_value = 0.04 + (self.id.get_parameter_value().integer_value * 0.001)   
         self.event_scheduler.schedule_event(1/lambda_value, self.simple_publish,args=[lambda_value])
-        time.sleep(15)
         self.event_scheduler.schedule_event((1/lambda_value)*2.1,self.execute_patrol_action)
 
     def simple_publish(self,lambda_value):

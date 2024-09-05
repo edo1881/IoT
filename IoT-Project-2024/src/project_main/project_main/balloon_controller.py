@@ -18,7 +18,7 @@ from project_interfaces.action import Patrol
 
 
 MIN_ALTITUDE_TO_PERFORM_PATROL = 15
-SIZE = 2
+SIZE = 6
 
 WORLD_NAME = "iot_project_world"
 
@@ -191,19 +191,6 @@ class BalloonController(Node):
         self.get_logger().info(f"Action requested. Performing movement to targets:\n\t{command_goal.targets}")
 
         self.fly_to_altitude(MIN_ALTITUDE_TO_PERFORM_PATROL)
-
-
-        targets_patrolled = 0
-        
-        for target in command_goal.targets:
-                
-            self.rotate_to_target(target)
-            self.move_to_target(target)
-
-            self.get_logger().info(f"Movement to target {targets_patrolled} completed!")
-            targets_patrolled += 1
-        
-        
         goal.succeed()
 
         result =  Patrol.Result()
