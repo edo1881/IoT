@@ -16,30 +16,6 @@
 
 
 // forward declaration of message dependencies and their conversion functions
-namespace geometry_msgs
-{
-namespace msg
-{
-namespace typesupport_fastrtps_cpp
-{
-bool cdr_serialize(
-  const geometry_msgs::msg::Point &,
-  eprosima::fastcdr::Cdr &);
-bool cdr_deserialize(
-  eprosima::fastcdr::Cdr &,
-  geometry_msgs::msg::Point &);
-size_t get_serialized_size(
-  const geometry_msgs::msg::Point &,
-  size_t current_alignment);
-size_t
-max_serialized_size_Point(
-  bool & full_bounded,
-  bool & is_plain,
-  size_t current_alignment);
-}  // namespace typesupport_fastrtps_cpp
-}  // namespace msg
-}  // namespace geometry_msgs
-
 
 namespace project_interfaces
 {
@@ -56,16 +32,8 @@ cdr_serialize(
   const project_interfaces::action::Patrol_Goal & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
-  // Member: targets
-  {
-    size_t size = ros_message.targets.size();
-    cdr << static_cast<uint32_t>(size);
-    for (size_t i = 0; i < size; i++) {
-      geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
-        ros_message.targets[i],
-        cdr);
-    }
-  }
+  // Member: action
+  cdr << ros_message.action;
   return true;
 }
 
@@ -75,17 +43,8 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   project_interfaces::action::Patrol_Goal & ros_message)
 {
-  // Member: targets
-  {
-    uint32_t cdrSize;
-    cdr >> cdrSize;
-    size_t size = static_cast<size_t>(cdrSize);
-    ros_message.targets.resize(size);
-    for (size_t i = 0; i < size; i++) {
-      geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
-        cdr, ros_message.targets[i]);
-    }
-  }
+  // Member: action
+  cdr >> ros_message.action;
 
   return true;
 }
@@ -103,19 +62,10 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
-  // Member: targets
-  {
-    size_t array_size = ros_message.targets.size();
-
-    current_alignment += padding +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
-
-    for (size_t index = 0; index < array_size; ++index) {
-      current_alignment +=
-        geometry_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
-        ros_message.targets[index], current_alignment);
-    }
-  }
+  // Member: action
+  current_alignment += padding +
+    eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+    (ros_message.action.size() + 1);
 
   return current_alignment - initial_alignment;
 }
@@ -140,26 +90,16 @@ max_serialized_size_Patrol_Goal(
   is_plain = true;
 
 
-  // Member: targets
+  // Member: action
   {
-    size_t array_size = 0;
+    size_t array_size = 1;
+
     full_bounded = false;
     is_plain = false;
-    current_alignment += padding +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
-
-
-    last_member_size = 0;
     for (size_t index = 0; index < array_size; ++index) {
-      bool inner_full_bounded;
-      bool inner_is_plain;
-      size_t inner_size =
-        geometry_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Point(
-        inner_full_bounded, inner_is_plain, current_alignment);
-      last_member_size += inner_size;
-      current_alignment += inner_size;
-      full_bounded &= inner_full_bounded;
-      is_plain &= inner_is_plain;
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
     }
   }
 
@@ -171,7 +111,7 @@ max_serialized_size_Patrol_Goal(
     using DataType = project_interfaces::action::Patrol_Goal;
     is_plain =
       (
-      offsetof(DataType, targets) +
+      offsetof(DataType, action) +
       last_member_size
       ) == ret_val;
   }

@@ -21,15 +21,15 @@ namespace action
 namespace builder
 {
 
-class Init_Patrol_Goal_targets
+class Init_Patrol_Goal_action
 {
 public:
-  Init_Patrol_Goal_targets()
+  Init_Patrol_Goal_action()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  ::project_interfaces::action::Patrol_Goal targets(::project_interfaces::action::Patrol_Goal::_targets_type arg)
+  ::project_interfaces::action::Patrol_Goal action(::project_interfaces::action::Patrol_Goal::_action_type arg)
   {
-    msg_.targets = std::move(arg);
+    msg_.action = std::move(arg);
     return std::move(msg_);
   }
 
@@ -48,7 +48,7 @@ template<>
 inline
 auto build<::project_interfaces::action::Patrol_Goal>()
 {
-  return project_interfaces::action::builder::Init_Patrol_Goal_targets();
+  return project_interfaces::action::builder::Init_Patrol_Goal_action();
 }
 
 }  // namespace project_interfaces

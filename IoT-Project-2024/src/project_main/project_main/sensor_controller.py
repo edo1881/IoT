@@ -1,3 +1,4 @@
+from threading import Thread
 import time
 import rclpy
 import random
@@ -56,9 +57,9 @@ class SensorController(Node):
             10
         )
        
-        lambda_value = 0.04 + (self.id.get_parameter_value().integer_value * 0.001)   
+        lambda_value = 0.06 + (self.id.get_parameter_value().integer_value * 0.001)   
         self.event_scheduler.schedule_event(1/lambda_value, self.simple_publish,args=[lambda_value])
-        self.event_scheduler.schedule_event((1/lambda_value)*2.1,self.execute_patrol_action)
+        Thread(self.event_scheduler.schedule_event((1/lambda_value)*2.1,self.execute_patrol_action)).start()
 
     def simple_publish(self,lambda_value):
         id = self.id.get_parameter_value().integer_value

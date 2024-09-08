@@ -13,10 +13,8 @@
 
 
 // Include directives for member types
-// Member `targets`
-#include "geometry_msgs/msg/point.h"
-// Member `targets`
-#include "geometry_msgs/msg/detail/point__rosidl_typesupport_introspection_c.h"
+// Member `action`
+#include "rosidl_runtime_c/string_functions.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -37,78 +35,23 @@ void project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c
   project_interfaces__action__Patrol_Goal__fini(message_memory);
 }
 
-size_t project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__size_function__Patrol_Goal__targets(
-  const void * untyped_member)
-{
-  const geometry_msgs__msg__Point__Sequence * member =
-    (const geometry_msgs__msg__Point__Sequence *)(untyped_member);
-  return member->size;
-}
-
-const void * project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__get_const_function__Patrol_Goal__targets(
-  const void * untyped_member, size_t index)
-{
-  const geometry_msgs__msg__Point__Sequence * member =
-    (const geometry_msgs__msg__Point__Sequence *)(untyped_member);
-  return &member->data[index];
-}
-
-void * project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__get_function__Patrol_Goal__targets(
-  void * untyped_member, size_t index)
-{
-  geometry_msgs__msg__Point__Sequence * member =
-    (geometry_msgs__msg__Point__Sequence *)(untyped_member);
-  return &member->data[index];
-}
-
-void project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__fetch_function__Patrol_Goal__targets(
-  const void * untyped_member, size_t index, void * untyped_value)
-{
-  const geometry_msgs__msg__Point * item =
-    ((const geometry_msgs__msg__Point *)
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__get_const_function__Patrol_Goal__targets(untyped_member, index));
-  geometry_msgs__msg__Point * value =
-    (geometry_msgs__msg__Point *)(untyped_value);
-  *value = *item;
-}
-
-void project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__assign_function__Patrol_Goal__targets(
-  void * untyped_member, size_t index, const void * untyped_value)
-{
-  geometry_msgs__msg__Point * item =
-    ((geometry_msgs__msg__Point *)
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__get_function__Patrol_Goal__targets(untyped_member, index));
-  const geometry_msgs__msg__Point * value =
-    (const geometry_msgs__msg__Point *)(untyped_value);
-  *item = *value;
-}
-
-bool project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__resize_function__Patrol_Goal__targets(
-  void * untyped_member, size_t size)
-{
-  geometry_msgs__msg__Point__Sequence * member =
-    (geometry_msgs__msg__Point__Sequence *)(untyped_member);
-  geometry_msgs__msg__Point__Sequence__fini(member);
-  return geometry_msgs__msg__Point__Sequence__init(member, size);
-}
-
 static rosidl_typesupport_introspection_c__MessageMember project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__Patrol_Goal_message_member_array[1] = {
   {
-    "targets",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
+    "action",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
     0,  // upper bound of string
-    NULL,  // members of sub message (initialized later)
-    true,  // is array
+    NULL,  // members of sub message
+    false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(project_interfaces__action__Patrol_Goal, targets),  // bytes offset in struct
+    offsetof(project_interfaces__action__Patrol_Goal, action),  // bytes offset in struct
     NULL,  // default value
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__size_function__Patrol_Goal__targets,  // size() function pointer
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__get_const_function__Patrol_Goal__targets,  // get_const(index) function pointer
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__get_function__Patrol_Goal__targets,  // get(index) function pointer
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__fetch_function__Patrol_Goal__targets,  // fetch(index, &value) function pointer
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__assign_function__Patrol_Goal__targets,  // assign(index, value) function pointer
-    project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__resize_function__Patrol_Goal__targets  // resize(index) function pointer
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
   }
 };
 
@@ -133,8 +76,6 @@ static rosidl_message_type_support_t project_interfaces__action__Patrol_Goal__ro
 ROSIDL_TYPESUPPORT_INTROSPECTION_C_EXPORT_project_interfaces
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, project_interfaces, action, Patrol_Goal)() {
-  project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__Patrol_Goal_message_member_array[0].members_ =
-    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, geometry_msgs, msg, Point)();
   if (!project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__Patrol_Goal_message_type_support_handle.typesupport_identifier) {
     project_interfaces__action__Patrol_Goal__rosidl_typesupport_introspection_c__Patrol_Goal_message_type_support_handle.typesupport_identifier =
       rosidl_typesupport_introspection_c__identifier;
@@ -165,7 +106,8 @@ ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspecti
 
 // Include directives for member types
 // Member `result`
-#include "rosidl_runtime_c/string_functions.h"
+// already included above
+// #include "rosidl_runtime_c/string_functions.h"
 
 #ifdef __cplusplus
 extern "C"

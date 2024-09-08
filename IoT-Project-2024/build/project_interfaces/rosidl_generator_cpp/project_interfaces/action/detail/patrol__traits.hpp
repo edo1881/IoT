@@ -14,10 +14,6 @@
 #include "project_interfaces/action/detail/patrol__struct.hpp"
 #include "rosidl_runtime_cpp/traits.hpp"
 
-// Include directives for member types
-// Member 'targets'
-#include "geometry_msgs/msg/detail/point__traits.hpp"
-
 namespace project_interfaces
 {
 
@@ -29,21 +25,10 @@ inline void to_flow_style_yaml(
   std::ostream & out)
 {
   out << "{";
-  // member: targets
+  // member: action
   {
-    if (msg.targets.size() == 0) {
-      out << "targets: []";
-    } else {
-      out << "targets: [";
-      size_t pending_items = msg.targets.size();
-      for (auto item : msg.targets) {
-        to_flow_style_yaml(item, out);
-        if (--pending_items > 0) {
-          out << ", ";
-        }
-      }
-      out << "]";
-    }
+    out << "action: ";
+    rosidl_generator_traits::value_to_yaml(msg.action, out);
   }
   out << "}";
 }  // NOLINT(readability/fn_size)
@@ -52,23 +37,14 @@ inline void to_block_style_yaml(
   const Patrol_Goal & msg,
   std::ostream & out, size_t indentation = 0)
 {
-  // member: targets
+  // member: action
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    if (msg.targets.size() == 0) {
-      out << "targets: []\n";
-    } else {
-      out << "targets:\n";
-      for (auto item : msg.targets) {
-        if (indentation > 0) {
-          out << std::string(indentation, ' ');
-        }
-        out << "-\n";
-        to_block_style_yaml(item, out, indentation + 2);
-      }
-    }
+    out << "action: ";
+    rosidl_generator_traits::value_to_yaml(msg.action, out);
+    out << "\n";
   }
 }  // NOLINT(readability/fn_size)
 

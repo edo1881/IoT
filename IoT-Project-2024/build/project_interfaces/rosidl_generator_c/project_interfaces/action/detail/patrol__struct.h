@@ -18,13 +18,13 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'targets'
-#include "geometry_msgs/msg/detail/point__struct.h"
+// Member 'action'
+#include "rosidl_runtime_c/string.h"
 
 /// Struct defined in action/Patrol in the package project_interfaces.
 typedef struct project_interfaces__action__Patrol_Goal
 {
-  geometry_msgs__msg__Point__Sequence targets;
+  rosidl_runtime_c__String action;
 } project_interfaces__action__Patrol_Goal;
 
 // Struct for a sequence of project_interfaces__action__Patrol_Goal.
@@ -42,7 +42,8 @@ typedef struct project_interfaces__action__Patrol_Goal__Sequence
 
 // Include directives for member types
 // Member 'result'
-#include "rosidl_runtime_c/string.h"
+// already included above
+// #include "rosidl_runtime_c/string.h"
 
 /// Struct defined in action/Patrol in the package project_interfaces.
 typedef struct project_interfaces__action__Patrol_Result

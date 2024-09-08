@@ -15,10 +15,6 @@
 #include "rosidl_runtime_cpp/message_initialization.hpp"
 
 
-// Include directives for member types
-// Member 'targets'
-#include "geometry_msgs/msg/detail/point__struct.hpp"
-
 #ifndef _WIN32
 # define DEPRECATED__project_interfaces__action__Patrol_Goal __attribute__((deprecated))
 #else
@@ -39,25 +35,33 @@ struct Patrol_Goal_
 
   explicit Patrol_Goal_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
   {
-    (void)_init;
+    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
+      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
+    {
+      this->action = "";
+    }
   }
 
   explicit Patrol_Goal_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : action(_alloc)
   {
-    (void)_init;
-    (void)_alloc;
+    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
+      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
+    {
+      this->action = "";
+    }
   }
 
   // field types and members
-  using _targets_type =
-    std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>>;
-  _targets_type targets;
+  using _action_type =
+    std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>;
+  _action_type action;
 
   // setters for named parameter idiom
-  Type & set__targets(
-    const std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>> & _arg)
+  Type & set__action(
+    const std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> & _arg)
   {
-    this->targets = _arg;
+    this->action = _arg;
     return *this;
   }
 
@@ -103,7 +107,7 @@ struct Patrol_Goal_
   // comparison operators
   bool operator==(const Patrol_Goal_ & other) const
   {
-    if (this->targets != other.targets) {
+    if (this->action != other.action) {
       return false;
     }
     return true;

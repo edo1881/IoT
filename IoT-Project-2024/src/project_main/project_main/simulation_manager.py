@@ -16,7 +16,7 @@ from project_interfaces.action import RequestSensor
 NUMBER_OF_BALLOONS = int(sys.argv[1])
 NUMBER_OF_SENSORS = int(sys.argv[2])
 
-SENSORS_RANGE = 40
+SENSORS_RANGE = 39
 
 class SimulationManager(Node):
 
@@ -83,7 +83,6 @@ class SimulationManager(Node):
 
     def response_balloon(self, msg):
          id = msg.data.split(":")[0]
-         sensor_id =msg.data.split(":")[1]
          dati = msg.data.split(":")[2]
          self.responses[id].append(dati)
 
@@ -123,20 +122,23 @@ class SimulationManager(Node):
 
         self.forward_data2bs(sensor_id,request_id)
         c=0
-        while (self.responses.get(request_id) is None or any("miss" in str(value) for value in self.responses.get(request_id, [])))  and (self.responses.get(request_id) is None or len(self.responses.get(request_id)) < self.balloon_per_sensor[request_id]) and c<=7:
+        while (self.responses.get(request_id) is None or \
+               any("miss" in str(value) for value in self.responses.get(request_id, [])))  \
+                and (self.responses.get(request_id) is None \
+                or len(self.responses.get(request_id)) < self.balloon_per_sensor[request_id]) and c<=7:
             c+=1
-            time.sleep(6.0)
-        test= str(any("miss" in str(value) for value in self.responses.get(request_id, [])))
+            time.sleep(0.01)
+
+        my_list = [x for x in self.responses.get(request_id, []) if x != "miss"]
         msg = String()
-        msg= " ".join(val for val in self.responses.get(request_id, []))
-        dato = msg
-        # timestamp = msg.data.split("_")[2]
-        self.get_logger().info('==================================')
-        self.get_logger().info(f'=============USCITO: {test} msg: {msg} request_id:{request_id} sensor:{sensor_id}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!===================')
-        self.get_logger().info('==================================')       
+        if len(my_list) == 0:
+            msg = f"{request_id}:miss"
+        else:    
+            msg = f"{request_id}:{my_list[0].split('[')[1].split(']')[0].split(',')[1]}"
+     
         goal_handle.succeed()
         result = RequestSensor.Result()
-        result.balloons_response = f"Data successfully received from sensor {sensor_id} : {dato}."
+        result.balloons_response = f"{sensor_id}:{msg}"
         del self.responses[request_id]
         return result
 

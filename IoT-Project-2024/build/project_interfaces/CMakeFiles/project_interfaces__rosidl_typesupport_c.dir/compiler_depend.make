@@ -30,7 +30,6 @@ CMakeFiles/project_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/pro
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
   /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/detail/uuid__struct.h \
@@ -187,6 +186,8 @@ rosidl_generator_c/project_interfaces/action/detail/request_sensor__functions.h:
 
 rosidl_generator_c/project_interfaces/action/request_sensor.h:
 
+rosidl_generator_c/project_interfaces/action/detail/request_sensor__type_support.h:
+
 rosidl_generator_c/project_interfaces/action/detail/patrol__functions.h:
 
 /opt/ros/humble/include/action_msgs/action_msgs/srv/detail/cancel_goal__type_support.h:
@@ -216,8 +217,6 @@ rosidl_generator_c/project_interfaces/action/detail/request_sensor__struct.h:
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
@@ -267,6 +266,8 @@ rosidl_generator_c/project_interfaces/action/patrol.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
 /usr/include/c++/11/cstddef:
 
 /opt/ros/humble/include/rosidl_typesupport_interface/rosidl_typesupport_interface/macros.h:
@@ -306,10 +307,6 @@ rosidl_typesupport_c/project_interfaces/action/request_sensor__type_support.cpp:
 /opt/ros/humble/include/action_msgs/action_msgs/msg/detail/goal_status_array__functions.h:
 
 /usr/include/features.h:
-
-rosidl_generator_c/project_interfaces/action/detail/request_sensor__type_support.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h:
 

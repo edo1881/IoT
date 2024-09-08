@@ -12,8 +12,8 @@
 
 
 // Include directives for member types
-// Member `targets`
-#include "geometry_msgs/msg/detail/point__functions.h"
+// Member `action`
+#include "rosidl_runtime_c/string_functions.h"
 
 bool
 project_interfaces__action__Patrol_Goal__init(project_interfaces__action__Patrol_Goal * msg)
@@ -21,8 +21,8 @@ project_interfaces__action__Patrol_Goal__init(project_interfaces__action__Patrol
   if (!msg) {
     return false;
   }
-  // targets
-  if (!geometry_msgs__msg__Point__Sequence__init(&msg->targets, 0)) {
+  // action
+  if (!rosidl_runtime_c__String__init(&msg->action)) {
     project_interfaces__action__Patrol_Goal__fini(msg);
     return false;
   }
@@ -35,8 +35,8 @@ project_interfaces__action__Patrol_Goal__fini(project_interfaces__action__Patrol
   if (!msg) {
     return;
   }
-  // targets
-  geometry_msgs__msg__Point__Sequence__fini(&msg->targets);
+  // action
+  rosidl_runtime_c__String__fini(&msg->action);
 }
 
 bool
@@ -45,9 +45,9 @@ project_interfaces__action__Patrol_Goal__are_equal(const project_interfaces__act
   if (!lhs || !rhs) {
     return false;
   }
-  // targets
-  if (!geometry_msgs__msg__Point__Sequence__are_equal(
-      &(lhs->targets), &(rhs->targets)))
+  // action
+  if (!rosidl_runtime_c__String__are_equal(
+      &(lhs->action), &(rhs->action)))
   {
     return false;
   }
@@ -62,9 +62,9 @@ project_interfaces__action__Patrol_Goal__copy(
   if (!input || !output) {
     return false;
   }
-  // targets
-  if (!geometry_msgs__msg__Point__Sequence__copy(
-      &(input->targets), &(output->targets)))
+  // action
+  if (!rosidl_runtime_c__String__copy(
+      &(input->action), &(output->action)))
   {
     return false;
   }
@@ -253,7 +253,8 @@ project_interfaces__action__Patrol_Goal__Sequence__copy(
 
 // Include directives for member types
 // Member `result`
-#include "rosidl_runtime_c/string_functions.h"
+// already included above
+// #include "rosidl_runtime_c/string_functions.h"
 
 bool
 project_interfaces__action__Patrol_Result__init(project_interfaces__action__Patrol_Result * msg)

@@ -65,17 +65,10 @@ CMakeFiles/project_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typ
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   rosidl_generator_c/project_interfaces/msg/rosidl_generator_c__visibility_control.h \
   rosidl_generator_c/project_interfaces/action/detail/patrol__struct.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
   /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/detail/uuid__struct.h \
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__functions.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_c__visibility_control.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__type_support.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__rosidl_typesupport_introspection_c.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string_functions.h \
   /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/uuid.h \
   /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/detail/uuid__functions.h \
@@ -181,6 +174,8 @@ CMakeFiles/project_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typ
   /opt/ros/humble/include/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c/service_introspection.h
 
 
+rosidl_generator_c/project_interfaces/action/detail/request_sensor__type_support.h:
+
 rosidl_generator_c/project_interfaces/action/request_sensor.h:
 
 rosidl_generator_c/project_interfaces/action/detail/request_sensor__functions.h:
@@ -201,6 +196,8 @@ rosidl_typesupport_introspection_c/project_interfaces/action/detail/request_sens
 
 rosidl_generator_c/project_interfaces/action/detail/patrol__type_support.h:
 
+/opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h:
+
 /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/detail/uuid__rosidl_typesupport_introspection_c.h:
 
 /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/detail/uuid__type_support.h:
@@ -208,22 +205,6 @@ rosidl_generator_c/project_interfaces/action/detail/patrol__type_support.h:
 /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/rosidl_generator_c__visibility_control.h:
 
 /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/uuid.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__type_support.h:
-
-/opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_c__visibility_control.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__functions.h:
-
-rosidl_generator_c/project_interfaces/action/detail/request_sensor__type_support.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__rosidl_typesupport_introspection_c.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h:
 
 /usr/include/alloca.h:
 
@@ -248,8 +229,6 @@ rosidl_generator_c/project_interfaces/action/detail/request_sensor__type_support
 rosidl_typesupport_introspection_c/project_interfaces/action/detail/request_sensor__rosidl_typesupport_introspection_c.h:
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 

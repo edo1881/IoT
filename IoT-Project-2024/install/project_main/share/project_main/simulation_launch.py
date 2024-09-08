@@ -17,9 +17,10 @@ from project_main.sim_utils import spawn_sdf
 
 WORLD_NAME = "iot_project_world"
 
-NUMBER_OF_BALLOONS = 3
-NUMBER_OF_SENSORS = 3
-
+NUMBER_OF_BALLOONS = 5
+NUMBER_OF_SENSORS = 15
+CACHE_SIZE = 8
+CACHE_POLICY = "FIFO" # Change to "LFU", "FIFO", or "Random", "LRU"
 #-----------------------------------------------------------------------------------------------
 # Launch file for the IoT Project. Launches all the nodes required to start the final solution
 #-----------------------------------------------------------------------------------------------
@@ -72,7 +73,16 @@ def generate_launch_description():
 
     #-------------------------- Spawn balloons and bridge their topics ---------------------------
     for i in range(NUMBER_OF_BALLOONS):
-        targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (0, i*5, 0)))
+        if i == 0:
+            targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (0, 0, 0)))
+        elif i == 1:
+            targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (25, 25, 0)))
+        elif i == 2:
+             targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (-25, 25, 0)))
+        elif i == 3:
+             targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (25, -25, 0)))
+        elif i == 4:
+             targets_to_spawn.append(spawn_sdf("resources/balloon/balloon.sdf", id = i, pos = (-25, -25, 0)))
 
         # Spawn bridge for cmd_vel and odometry for each of the spawned object
         targets_to_spawn.append(
@@ -99,7 +109,11 @@ def generate_launch_description():
                 package="project_main",
                 executable="balloon_controller",
                 namespace=f"Balloon_{i}",
-                name=f"BalloonController{i}"
+                name=f"BalloonController{i}",
+                 arguments=[
+                f"{CACHE_SIZE}",
+                f"{CACHE_POLICY}"
+            ]
             )
         )
 

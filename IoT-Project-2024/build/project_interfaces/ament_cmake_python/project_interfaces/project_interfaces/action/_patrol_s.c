@@ -16,16 +16,9 @@
 #include "project_interfaces/action/detail/patrol__struct.h"
 #include "project_interfaces/action/detail/patrol__functions.h"
 
-#include "rosidl_runtime_c/primitives_sequence.h"
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
+#include "rosidl_runtime_c/string.h"
+#include "rosidl_runtime_c/string_functions.h"
 
-// Nested array functions includes
-#include "geometry_msgs/msg/detail/point__functions.h"
-// end nested array functions include
-ROSIDL_GENERATOR_C_IMPORT
-bool geometry_msgs__msg__point__convert_from_py(PyObject * _pymsg, void * _ros_message);
-ROSIDL_GENERATOR_C_IMPORT
-PyObject * geometry_msgs__msg__point__convert_to_py(void * raw_ros_message);
 
 ROSIDL_GENERATOR_C_EXPORT
 bool project_interfaces__action__patrol__goal__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -60,37 +53,19 @@ bool project_interfaces__action__patrol__goal__convert_from_py(PyObject * _pymsg
     assert(strncmp("project_interfaces.action._patrol.Patrol_Goal", full_classname_dest, 45) == 0);
   }
   project_interfaces__action__Patrol_Goal * ros_message = _ros_message;
-  {  // targets
-    PyObject * field = PyObject_GetAttrString(_pymsg, "targets");
+  {  // action
+    PyObject * field = PyObject_GetAttrString(_pymsg, "action");
     if (!field) {
       return false;
     }
-    PyObject * seq_field = PySequence_Fast(field, "expected a sequence in 'targets'");
-    if (!seq_field) {
+    assert(PyUnicode_Check(field));
+    PyObject * encoded_field = PyUnicode_AsUTF8String(field);
+    if (!encoded_field) {
       Py_DECREF(field);
       return false;
     }
-    Py_ssize_t size = PySequence_Size(field);
-    if (-1 == size) {
-      Py_DECREF(seq_field);
-      Py_DECREF(field);
-      return false;
-    }
-    if (!geometry_msgs__msg__Point__Sequence__init(&(ros_message->targets), size)) {
-      PyErr_SetString(PyExc_RuntimeError, "unable to create geometry_msgs__msg__Point__Sequence ros_message");
-      Py_DECREF(seq_field);
-      Py_DECREF(field);
-      return false;
-    }
-    geometry_msgs__msg__Point * dest = ros_message->targets.data;
-    for (Py_ssize_t i = 0; i < size; ++i) {
-      if (!geometry_msgs__msg__point__convert_from_py(PySequence_Fast_GET_ITEM(seq_field, i), &dest[i])) {
-        Py_DECREF(seq_field);
-        Py_DECREF(field);
-        return false;
-      }
-    }
-    Py_DECREF(seq_field);
+    rosidl_runtime_c__String__assign(&ros_message->action, PyBytes_AS_STRING(encoded_field));
+    Py_DECREF(encoded_field);
     Py_DECREF(field);
   }
 
@@ -115,28 +90,17 @@ PyObject * project_interfaces__action__patrol__goal__convert_to_py(void * raw_ro
     }
   }
   project_interfaces__action__Patrol_Goal * ros_message = (project_interfaces__action__Patrol_Goal *)raw_ros_message;
-  {  // targets
+  {  // action
     PyObject * field = NULL;
-    size_t size = ros_message->targets.size;
-    field = PyList_New(size);
+    field = PyUnicode_DecodeUTF8(
+      ros_message->action.data,
+      strlen(ros_message->action.data),
+      "replace");
     if (!field) {
       return NULL;
     }
-    geometry_msgs__msg__Point * item;
-    for (size_t i = 0; i < size; ++i) {
-      item = &(ros_message->targets.data[i]);
-      PyObject * pyitem = geometry_msgs__msg__point__convert_to_py(item);
-      if (!pyitem) {
-        Py_DECREF(field);
-        return NULL;
-      }
-      int rc = PyList_SetItem(field, i, pyitem);
-      (void)rc;
-      assert(rc == 0);
-    }
-    assert(PySequence_Check(field));
     {
-      int rc = PyObject_SetAttrString(_pymessage, "targets", field);
+      int rc = PyObject_SetAttrString(_pymessage, "action", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -162,8 +126,10 @@ PyObject * project_interfaces__action__patrol__goal__convert_to_py(void * raw_ro
 // already included above
 // #include "project_interfaces/action/detail/patrol__functions.h"
 
-#include "rosidl_runtime_c/string.h"
-#include "rosidl_runtime_c/string_functions.h"
+// already included above
+// #include "rosidl_runtime_c/string.h"
+// already included above
+// #include "rosidl_runtime_c/string_functions.h"
 
 
 ROSIDL_GENERATOR_C_EXPORT

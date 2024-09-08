@@ -195,7 +195,6 @@ CMakeFiles/project_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp
   /usr/include/c++/11/stdexcept \
   /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_runtime_cpp/message_initialization.hpp \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_initialization.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.hpp \
   /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/detail/uuid__struct.hpp \
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.hpp \
   /opt/ros/humble/include/action_msgs/action_msgs/srv/cancel_goal.hpp \
@@ -587,10 +586,6 @@ rosidl_generator_cpp/project_interfaces/action/detail/request_sensor__struct.hpp
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
-/opt/ros/humble/include/rosidl_typesupport_cpp/rosidl_typesupport_cpp/service_type_support_dispatch.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
 /usr/include/c++/11/ext/new_allocator.h:
 
 /usr/include/c++/11/bits/invoke.h:
@@ -734,8 +729,6 @@ rosidl_generator_cpp/project_interfaces/action/detail/patrol__struct.hpp:
 /usr/include/c++/11/debug/debug.h:
 
 /usr/include/features-time64.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
@@ -1046,3 +1039,7 @@ rosidl_typesupport_cpp/project_interfaces/action/patrol__type_support.cpp:
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/service_type_support_struct.h:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+/opt/ros/humble/include/rosidl_typesupport_cpp/rosidl_typesupport_cpp/service_type_support_dispatch.hpp:

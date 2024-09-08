@@ -196,7 +196,6 @@ CMakeFiles/project_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesu
   /usr/include/c++/11/stdexcept \
   /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_runtime_cpp/message_initialization.hpp \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_initialization.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.hpp \
   /opt/ros/humble/include/unique_identifier_msgs/unique_identifier_msgs/msg/detail/uuid__struct.hpp \
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.hpp \
   /opt/ros/humble/include/action_msgs/action_msgs/srv/cancel_goal.hpp \
@@ -745,8 +744,6 @@ rosidl_typesupport_fastrtps_cpp/project_interfaces/action/detail/dds_fastrtps/re
 
 /opt/ros/humble/include/fastcdr/fastcdr/exceptions/NotEnoughMemoryException.h:
 
-/usr/include/strings.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
@@ -814,6 +811,8 @@ rosidl_generator_cpp/project_interfaces/action/detail/request_sensor__struct.hpp
 /opt/ros/humble/include/action_msgs/action_msgs/msg/detail/goal_info__struct.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
+
+/usr/include/strings.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
@@ -890,8 +889,6 @@ rosidl_generator_cpp/project_interfaces/action/detail/request_sensor__struct.hpp
 /usr/include/c++/11/debug/debug.h:
 
 /usr/include/features-time64.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.hpp:
 
 /usr/include/c++/11/bits/memoryfwd.h:
 

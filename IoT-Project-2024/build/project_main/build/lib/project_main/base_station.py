@@ -1,3 +1,4 @@
+import datetime
 import sys
 import rclpy
 from rclpy.node import Node
@@ -21,10 +22,11 @@ class BaseStation(Node):
 	    # Initialize action client for requesting sensor data
         self._action_client = ActionClient(self, RequestSensor, 'sensor_request')
         
-        self.sensor_data = {}  # Stores received sensor data
-        self.missing_data = {}  # Keeps track of missing data requests
-        self.hit_data = {}
-
+        self.store_tmstmp = {}
+        self.miss_counter = 0
+        self.hit_counter = 0
+        self.received = 0
+        self.total_time = 0
         # Optionally subscribe to the odometry topic if needed
         self.create_subscription(
             Odometry,
@@ -32,9 +34,8 @@ class BaseStation(Node):
             self.store_position,
             10
         )
-        # Example: Assume data format is "sensor_id:data"'''
         # Initialize EventScheduler
-        time.sleep(20)
+        time.sleep(30)
         self.scheduler = EventScheduler()
         # Subscribe to the simulation clock to trigger the event scheduler
         self.clock_subscription = self.create_subscription(
@@ -63,7 +64,8 @@ class BaseStation(Node):
         Send a request to the SimulationManager to retrieve data from a specific sensor.
         """
         self.get_logger().info(f"Requesting data from sensor {sensor_id}:{self.id}")
-
+        self.id+=1
+        self.store_tmstmp[self.id] = time.time()
         goal_msg = RequestSensor.Goal()
         goal_msg.bs_request = f"{sensor_id}:{self.id}"
         self._action_client.wait_for_server()
@@ -71,7 +73,6 @@ class BaseStation(Node):
             goal_msg,
             feedback_callback=self.feedback_callback
         )
-        self.id+=1
         send_goal_future.add_done_callback(self.goal_response_callback)
 
     
@@ -79,9 +80,8 @@ class BaseStation(Node):
         """
         Define lambda values for different sensors based on their characteristics.
         """
-        # Example: You could have different lambda values for different sensors
-        # For now, we'll just use a fixed lambda value for all sensors
-        return 0.03 + (sensor_id * 0.003)   # Example, customize this as need
+        #You could have different lambda values for different sensors
+        return 0.03 + (sensor_id * 0.003)
         
     def store_position(self, msg: Odometry):
         """
@@ -101,17 +101,27 @@ class BaseStation(Node):
         self.result_callback(future)
 
     def result_callback(self, future):
+        
+        current_time = time.time()
         goal_handle = future.result()
         result = goal_handle.get_result().result
-        if True:
-            self.get_logger().info('============ BASE STATION ===================')
-            self.get_logger().info(f"Data received successfully for sensor {result.balloons_response}")
-            self.get_logger().info('==================================')
-
-            # Process the data here if necessary
+        sensor_id=result.balloons_response.split(":")[0]
+        request_id=result.balloons_response.split(":")[1]
+        value=result.balloons_response.split(":")[2]
+        self.total_time += current_time - self.store_tmstmp[int(request_id)]
+        if value=="miss":
+            self.miss_counter+=1
         else:
-            self.get_logger().info(f"Data request failed for sensor {result.balloons_response}")
-            # Handle missing data
+            self.hit_counter+=1
+        self.get_logger().info('============ BASE STATION ===================')
+        self.get_logger().info(f"Data received successfully for sensor {sensor_id}, Request: {request_id}, Value: {value}")
+        self.get_logger().info('==================================')
+        self.get_logger().info('============ STATISTICS ===================')
+        self.received = self.hit_counter + self.miss_counter
+        self.get_logger().info(f'MISS RATE: {self.miss_counter}/{self.received}')
+        self.get_logger().info(f'HIT RATE: {self.hit_counter}/{self.received}')
+        self.get_logger().info(f'AVG TIME: {self.total_time/self.received}')
+        self.get_logger().info('==================================')
 
     def feedback_callback(self, feedback_msg):
         self.get_logger().info(f"Feedback received: {feedback_msg.feedback.feed}")
