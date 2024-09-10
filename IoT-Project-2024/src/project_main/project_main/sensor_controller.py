@@ -26,7 +26,7 @@ class SensorController(Node):
         self.y_limit=100
         self.position = Point(x = 0.0, y = 0.0, z = 0.0)
         self.yaw = 0
-        self.stop_msg = Twist()
+        self.last_move = 0
         self.tx_topic = self.create_publisher(
             String,
             'tx_data',
@@ -59,7 +59,7 @@ class SensorController(Node):
        
         lambda_value = 0.06 + (self.id.get_parameter_value().integer_value * 0.001)   
         self.event_scheduler.schedule_event(1/lambda_value, self.simple_publish,args=[lambda_value])
-        Thread(self.event_scheduler.schedule_event((1/lambda_value)*2.1,self.execute_patrol_action)).start()
+        self.event_scheduler.schedule_event((1/lambda_value)*0.5,self.execute_patrol_action)
 
     def simple_publish(self,lambda_value):
         id = self.id.get_parameter_value().integer_value
@@ -81,12 +81,14 @@ class SensorController(Node):
             odometry_msg.pose.pose.orientation.z,
             odometry_msg.pose.pose.orientation.w
         )
+        #limit the sensor within the squared area
         if self.position.x > 45 or self.position.x < -45 or self.position.y > 45 or self.position.y < -45:
+             #invert sensor direction
              stop_msg = Twist()
-             stop_msg.linear = Vector3(x=-1.0, y=0.0, z=0.0)
+             stop_msg.linear = Vector3(x=-(self.last_move), y=0.0, z=0.0)
              stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
              self.cmd_vel_publisher.publish(stop_msg)
-             time.sleep(4)
+             time.sleep(3)
              stop_msg = Twist()
              stop_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
              stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
@@ -95,16 +97,22 @@ class SensorController(Node):
     def execute_patrol_action(self):
         id = self.id.get_parameter_value().integer_value
         target = float(random.randint(-1,1))
-        stop_msg = Twist()
-        stop_msg.linear = Vector3(x=target, y=0.0, z=0.0)
-        stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
-        self.cmd_vel_publisher.publish(stop_msg)
-        time.sleep(2)
-        stop_msg = Twist()
-        stop_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
-        stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.5)
-        self.cmd_vel_publisher.publish(stop_msg)
+        self.last_move = target
+        #rotate the sensor
+        rotate_msg = Twist()
+        rotate_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
+        rotate_msg.angular = Vector3(x=0.0, y=0.0, z=0.5)
+        self.cmd_vel_publisher.publish(rotate_msg)
         time.sleep(1)
+
+        #move the sensor
+        move_msg = Twist()
+        move_msg.linear = Vector3(x=target, y=0.0, z=0.0)
+        move_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
+        self.cmd_vel_publisher.publish(move_msg)
+        time.sleep(3)
+
+        #stop the sensor
         stop_msg = Twist()
         stop_msg.linear = Vector3(x=0.0, y=0.0, z=0.0)
         stop_msg.angular = Vector3(x=0.0, y=0.0, z=0.0)
